@@ -1,10 +1,11 @@
+body {
+    background-color: #dddddd;
+    font-family: Arial, sans-serif;
+}
+
 header {
     background-color: #2a2a2a;
     height: 50px;
-}
-
-body {
-    background-color: #dddddd;
 }
 
 #header-logo {
