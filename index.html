@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/dashboard.css">
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="scripts/jquery-2.1.4.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
 </head>
 <body id="luchs-body">
@@ -16,6 +17,19 @@
 
     <h1 id="header-title">Luchs</h1>
     <button id="header-user-button">Benutzer</button>
+    <!-- Single button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
 </header>
 
 <div id="login-view" style="display:block">
