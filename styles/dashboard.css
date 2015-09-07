@@ -1,0 +1,11 @@
+#dashboard-view table {
+    border-collapse: separate;
+    border-spacing: 20px;
+    text-align: center;
+}
+
+#dashboard-view td {
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+}
