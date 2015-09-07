@@ -10,37 +10,28 @@
 <body>
 <header>
     <span id="header-logo"></span>
+
     <h1 id="header-title">Luchs</h1>
     <button id="header-user-button">Benutzer</button>
 </header>
 
-<div id="login-view">
-    <table>
-        <tr>
-            <td><label>Benutzername: </label></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="Benutzername"></td>
-        </tr>
-        <tr>
-            <td><label>Passwort:  </label></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" name="Passwort">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button type="button" id="login">Login</button>
-            </td>
-        </tr>
+<div id="login-view" style="display:block">
 
+    <form>
+        <label for="login-username-box">Benutzername: </label>
+        <br>
+        <input type="text" name="username" id="login-username-box" required>
+        <br>
+        <label for="login-password-box">Passwort: </label>
+        <br>
+        <input type="text" name="password" id="login-password-box" required>
+        <br>
+        <button type="button" id="login">Login</button>
+    </form>
 
-    </table>
 </div>
 
-<div id="dashboard-view">
+<div id="dashboard-view" style="display:none">
     <table>
         <tr>
             <td>Veranstaltungen verwalten</td>

@@ -1,22 +1,30 @@
 #login-view {
-    background-color: grey;
+    /*background-color: grey;*/
     /*margin-top: auto;*/
     /*margin-bottom: auto;*/
-    margin-left: auto;
+    margin-top: 200px;
     margin-right: auto;
+    margin-left: auto;
     height: 250px;
     width: 250px;
 
 }
 
 #login-view label {
-    font-size: 2em;
+    font-size: 35px;
     width: 100%;
 
 }
 
 #login-view input {
     width: 100%;
-    height: 30px
-;
+    height: 25px;
+}
+
+#login-view button {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 100px;
 }
