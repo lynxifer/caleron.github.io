@@ -1,11 +1,22 @@
 #dashboard-view table {
     border-collapse: separate;
-    border-spacing: 20px;
+    border-spacing: 60px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+    width: 1116px;
 }
 
 #dashboard-view td {
     border: 1px solid black;
     height: 200px;
     width: 200px;
+    background-color: #fefefe;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease 0s;
+}
+
+#dashboard-view td:hover {
+    box-shadow: 0 0 10px #2a2a2a;
 }
