@@ -1,3 +1,25 @@
 header {
+    background-color: #2a2a2a;
+    height: 50px;
+}
 
+body {
+    background-color: #dddddd;
+}
+
+#header-logo {
+    height: 50px;
+    width: 60px;
+    background-image: url("../images/logo.jpg");
+    display: inline-block;
+    float: left;
+}
+
+#header-title {
+    color: white;
+    text-align: center;
+}
+
+#header-user-button {
+    float: right;
 }
