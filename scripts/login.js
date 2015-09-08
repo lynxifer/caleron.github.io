@@ -21,3 +21,9 @@ loginController.login = function (event) {
         alert("Login fehlgeschlagen!");
     });
 };
+
+loginController.logout = function(){
+        DB.User.logout().then(function(){
+            viewController.showView("login");
+    });
+};

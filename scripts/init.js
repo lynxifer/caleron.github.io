@@ -1,6 +1,6 @@
 var init = {};
 /**
- * Wird ausgeführt, wenn das Dokument geladen ist
+ * Wird ausgefï¿½hrt, wenn das Dokument geladen ist
  */
 $(document).ready(function () {
     /**
@@ -9,7 +9,7 @@ $(document).ready(function () {
      */
     var currentView = localStorage.getItem("currentView");
 
-    //nur Ausführen, wenn Variable im localStorage vorhanden
+    //nur Ausfï¿½hren, wenn Variable im localStorage vorhanden
     if (currentView) {
         viewController.showView(currentView);
     } else {
@@ -25,4 +25,6 @@ init.assignHandlers = function() {
     DB.ready(loginController.autoLogin);
 
     $("#login-view-form").submit(loginController.login);
+
+    $("#logout-button").on("click",loginController.logout);
 };
