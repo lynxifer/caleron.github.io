@@ -55,3 +55,17 @@
 .registration-module-list-item-details {
     display: none;
 }
+
+.registration-module-list-item-details table {
+    margin-left: 10px;
+}
+.registration-module-list-item-details th {
+    min-width: 180px;
+}
+.registration-module-list-item-details-button-box {
+    height: 38px;
+}
+.registration-module-list-item-details button {
+    float: right;
+    margin-right: 10px;
+}

@@ -83,15 +83,39 @@
     <div id="registration-detail-view">
         <div class="registration-module-list-item">
             <div class="registration-module-list-item-header">
-                <span class="registration-module-list-item-title">Softwareentwicklung 1</span>
+                <span class="registration-module-list-item-title">{{title}}</span>
                 <span class="registration-module-list-item-right-box">
-                    <span class="registration-module-list-item-lp">3 LP</span>
+                    <span class="registration-module-list-item-lp">{{credits}} LP</span>
                     <span class="registration-module-list-item-show">Anzeigen</span>
                 </span>
             </div>
             <div class="registration-module-list-item-details">
-                <h1>Alter verwalter</h1>
-                <button>Anmelden usw.</button>
+
+                <table>
+                    <tr>
+                        <th>Modulveranwortlicher:</th>
+                        <td>{{responsible}}</td>
+                    </tr>
+                    <tr>
+                        <th>Credits:</th>
+                        <td>{{credits}}</td>
+                    </tr>
+                    <tr>
+                        <th>Modulvoraussetzungen:</th>
+                        <td>{{precondition}}</td>
+                    </tr>
+                    <tr>
+                        <th>Veranstaltungen:</th>
+                        <td>{{courses}}</td>
+                    </tr>
+                    <tr>
+                        <th>Modulbeschreibung:</th>
+                        <td>{{description}}</td>
+                    </tr>
+                </table>
+                <div class="registration-module-list-item-details-button-box">
+                    <button class="btn btn-default">Anmelden</button>
+                </div>
             </div>
         </div>
         <div class="registration-module-list-item">Softwareentwicklung 2</div>
