@@ -21,6 +21,7 @@ loginController.login = function (event) {
 
     DB.User.login(username, password).then(function () {
         $("#header-user-button").css("visibility", "visible");
+        $("header-username-label").text(username);
         viewController.showView("dashboard");
     }, function () {
         alert("Login fehlgeschlagen!");
