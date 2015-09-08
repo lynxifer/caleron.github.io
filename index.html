@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/dashboard.css">
-
+    <link rel="stylesheet" href="styles/registration-manager.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+
     <script src="libs/jquery-2.1.4.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
     <script src="scripts/viewController.js"></script>
@@ -21,7 +22,8 @@
     <h1 id="header-title">Luchs</h1>
 
     <div class="btn-group" id="header-user-button">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
             Benutzername <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
@@ -61,6 +63,18 @@
             <td>Hilfe</td>
         </tr>
     </table>
+</div>
+
+<div id="registration-manager-view" class="view-container">
+    <ul id="registration-master-view">
+        <li>Pflichtmodule</li>
+        <li>Wahlpflichtmodule</li>
+    </ul>
+    <div id="registration-detail-view">
+        <div class="registration-module-list-item">Softwareentwicklung 1</div>
+        <div class="registration-module-list-item">Softwareentwicklung 2</div>
+        <div class="registration-module-list-item">Formale Grundlagen der Informatik 1</div>
+    </div>
 </div>
 </body>
 </html>

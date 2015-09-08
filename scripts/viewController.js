@@ -21,6 +21,9 @@ $(document).ready(function () {
             case "dashboard":
                 $("#dashboard-view").css("display", "block");
                 break;
+            case "registration":
+                $("#registration-manager-view").css("display", "block");
+                break;
         }
     }
 
