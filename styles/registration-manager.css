@@ -33,7 +33,6 @@
 
 .registration-module-list-item {
     border-bottom: 1px solid black;
-    padding: 10px 20px;
 }
 
 .registration-module-list-item:last-child {
@@ -42,6 +41,7 @@
 
 .registration-module-list-item-header {
     cursor: pointer;
+    padding: 10px 20px;
 }
 
 .registration-module-list-item-right-box {
@@ -50,4 +50,8 @@
 
 .registration-module-list-item-show {
     text-decoration: underline;
+}
+
+.registration-module-list-item-details {
+    display: none;
 }

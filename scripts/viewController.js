@@ -13,9 +13,11 @@ viewController.showView = function (view) {
             break;
         case "dashboard":
             $("#dashboard-view").css("display", "block");
+            dashboardController.init();
             break;
         case "registration":
             $("#registration-manager-view").css("display", "block");
+            moduleRegistrationController.init();
             break;
     }
 };
