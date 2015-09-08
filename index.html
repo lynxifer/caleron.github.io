@@ -26,7 +26,7 @@
     <div class="btn-group" id="header-user-button">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-            <span id = "header-username-label"></span>
+            <span id="header-username-label"></span>
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
@@ -70,13 +70,30 @@
 
 <div id="registration-manager-view" class="view-container">
     <ul id="registration-master-view">
-        <li>Pflichtmodule</li>
-        <li>Wahlpflichtmodule</li>
+        <li><span>Pflichtmodule</span>
+            <ul>
+                <li>Diesdas</li>
+                <li>Diesdas</li>
+                <li>Diesdas</li>
+            </ul>
+        </li>
+        <li><span>Wahlpflichtmodule</span></li>
     </ul>
     <div id="registration-detail-view">
-        <div class="registration-module-list-item">Softwareentwicklung 1</div>
+        <div class="registration-module-list-item">
+            <div class="registration-module-list-item-header">
+                <span class="registration-module-list-item-title">Softwareentwicklung 1</span>
+                <span class="registration-module-list-item-right-box">
+                    <span class="registration-module-list-item-lp">3 LP</span>
+                    <span class="registration-module-list-item-show">Anzeigen</span>
+                </span>
+            </div>
+            <div class="registration-module-list-item-expand">
+
+            </div>
+        </div>
         <div class="registration-module-list-item">Softwareentwicklung 2</div>
-        <div class="registration-module-list-item">Formale Grundlagen der Informatik 1</div>
+        <div class="registration-module-list-item">Softwareentwicklung 2</div>
     </div>
 </div>
 </body>

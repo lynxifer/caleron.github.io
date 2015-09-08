@@ -39,3 +39,15 @@
 .registration-module-list-item:last-child {
     border-bottom: 0 none;
 }
+
+.registration-module-list-item-header {
+    cursor: pointer;
+}
+
+.registration-module-list-item-right-box {
+    float: right;
+}
+
+.registration-module-list-item-show {
+    text-decoration: underline;
+}
