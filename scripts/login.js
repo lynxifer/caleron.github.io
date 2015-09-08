@@ -22,8 +22,8 @@ loginController.login = function (event) {
     });
 };
 
-loginController.logout = function(){
-        DB.User.logout().then(function(){
-            viewController.showView("login");
+loginController.logout = function () {
+    DB.User.logout().then(function () {
+        viewController.showView("login");
     });
 };

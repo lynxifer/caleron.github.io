@@ -9,7 +9,7 @@ $(document).ready(function () {
      */
     var currentView = localStorage.getItem("currentView");
 
-    //nur Ausfï¿½hren, wenn Variable im localStorage vorhanden
+    //nur Ausführen, wenn Variable im localStorage vorhanden
     if (currentView) {
         viewController.showView(currentView);
     } else {
@@ -21,10 +21,10 @@ $(document).ready(function () {
     init.assignHandlers();
 });
 
-init.assignHandlers = function() {
+init.assignHandlers = function () {
     DB.ready(loginController.autoLogin);
 
     $("#login-view-form").submit(loginController.login);
 
-    $("#logout-button").on("click",loginController.logout);
+    $("#logout-button").on("click", loginController.logout);
 };
