@@ -15,6 +15,7 @@
     <script src="libs/baqend.min.js"></script>
     <script src="libs/handlebars-v4.0.2.js"></script>
     <script src="scripts/login.js"></script>
+    <script src="scripts/init.js"></script>
 </head>
 <body id="luchs-body">
 <header id="luchs-header">
@@ -35,16 +36,16 @@
 
 <div id="login-view" class="view-container">
 
-    <form>
+    <form id="login-view-form">
         <label for="login-username-box">Benutzername: </label>
         <br>
-        <input type="text" name="username" id="login-username-box" required>
+        <input type="text" id="login-username-box" required>
         <br>
         <label for="login-password-box">Passwort: </label>
         <br>
-        <input type="password" name="password" id="login-password-box" required>
+        <input type="password" id="login-password-box" required>
         <br>
-        <button type="button" id="login-button">Login</button>
+        <button type="submit" id="login-button">Login</button>
     </form>
 
 </div>

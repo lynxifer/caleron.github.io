@@ -1,3 +1,4 @@
+var init = {};
 /**
  * Wird ausgeführt, wenn das Dokument geladen ist
  */
@@ -11,9 +12,17 @@ $(document).ready(function () {
     //nur Ausführen, wenn Variable im localStorage vorhanden
     if (currentView) {
         viewController.showView(currentView);
+    } else {
+        viewController.showView("login");
     }
 
     DB.connect("http://luchs.baqend.com");
 
-    DB.ready(loginController.login);
+    init.assignHandlers();
 });
+
+init.assignHandlers = function() {
+    DB.ready(loginController.autoLogin);
+
+    $("#login-view-form").submit(loginController.login);
+};

@@ -3,18 +3,21 @@
  */
 var loginController = {};
 
-loginController.login = function () {
+loginController.autoLogin = function () {
     if (DB.User.me) {
         viewController.showView("dashboard");
-    } else {
-        $("#login-button").on("click", function () {
-            var username = $("#login-username-box").val();
-            var password = $("#login-password-box").val();
-            DB.User.login(username, password).then(function () {
-                viewController.showView("dashboard");
-            }, function () {
-                alert("Login fehlgeschlagen!");
-            });
-        });
     }
+};
+
+loginController.login = function (event) {
+    event.preventDefault();
+
+    var username = $("#login-username-box").val();
+    var password = $("#login-password-box").val();
+
+    DB.User.login(username, password).then(function () {
+        viewController.showView("dashboard");
+    }, function () {
+        alert("Login fehlgeschlagen!");
+    });
 };
