@@ -9,6 +9,7 @@ viewController.showView = function (view) {
     switch (view) {
         case "login":
             $("#login-view").css("display", "block");
+            loginController.init();
             break;
         case "dashboard":
             $("#dashboard-view").css("display", "block");

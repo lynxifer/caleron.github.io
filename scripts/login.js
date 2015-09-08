@@ -3,6 +3,10 @@
  */
 var loginController = {};
 
+loginController.init = function () {
+    $("#header-user-button").css("visibility", "hidden");
+};
+
 loginController.autoLogin = function () {
     if (DB.User.me) {
         viewController.showView("dashboard");
@@ -16,6 +20,7 @@ loginController.login = function (event) {
     var password = $("#login-password-box").val();
 
     DB.User.login(username, password).then(function () {
+        $("#header-user-button").css("visibility", "visible");
         viewController.showView("dashboard");
     }, function () {
         alert("Login fehlgeschlagen!");
