@@ -9,8 +9,7 @@ loginController.init = function () {
 
 loginController.autoLogin = function () {
     if (DB.User.me) {
-        viewController.showView("dashboard");
-        $("#header-user-button").css("visibility", "visible");
+        loginController.loginSuccess();
     }
 };
 
@@ -21,12 +20,18 @@ loginController.login = function (event) {
     var password = $("#login-password-box").val();
 
     DB.User.login(username, password).then(function () {
-        $("#header-user-button").css("visibility", "visible");
-        $("header-username-label").text(username);
-        viewController.showView("dashboard");
+        loginController.loginSuccess();
     }, function () {
         alert("Login fehlgeschlagen!");
     });
+};
+
+loginController.loginSuccess = function () {
+    var username = DB.User.me.username;
+
+    $("#header-user-button").css("visibility", "visible");
+    $("#header-username-label").text(username);
+    viewController.showView("dashboard");
 };
 
 loginController.logout = function () {
