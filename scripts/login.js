@@ -10,6 +10,7 @@ loginController.init = function () {
 loginController.autoLogin = function () {
     if (DB.User.me) {
         viewController.showView("dashboard");
+        $("#header-user-button").css("visibility", "visible");
     }
 };
 
