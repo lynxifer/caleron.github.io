@@ -23,4 +23,10 @@ $(document).ready(function () {
                 break;
         }
     }
+
+    connectDB();
 });
+
+function connectDB() {
+    DB.connect("http://luchs.baqend.com");
+}

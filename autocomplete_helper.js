@@ -39,5 +39,11 @@ var DB = {
     User: function () {
         this.id = "";
         this.username = "";
+    },
+    connect: function(url) {
+
+    },
+    ready: function (callback) {
+        
     }
 };
