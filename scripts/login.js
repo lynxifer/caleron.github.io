@@ -1,20 +1,20 @@
 /**
  * Created by 3buchhar on 08.09.2015.
  */
+var loginController = {};
 
-$(document).ready(function () {
+loginController.login = function () {
     if (DB.User.me) {
-        alter("Sie sind schon eingeloggt!");
+        viewController.showView("dashboard");
     } else {
         $("#login-button").on("click", function () {
             var username = $("#login-username-box").val();
             var password = $("#login-password-box").val();
             DB.User.login(username, password).then(function () {
-                $("#login-view").hide();
-                $("#dashboard-view").show();
+                viewController.showView("dashboard");
             }, function () {
                 alert("Login fehlgeschlagen!");
             });
         });
     }
-});
+};
