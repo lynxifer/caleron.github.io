@@ -4,7 +4,7 @@
 $(document).ready(function () {
     /**
      * Variable aus dem LocalStorage
-     * Setzen mit localStorage.setItem("currentView", wert);
+     * Setzen mit localStorage.setItem("currentView", "login");
      */
     var currentView = localStorage.getItem("currentView");
 
