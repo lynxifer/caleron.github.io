@@ -3,7 +3,7 @@
     margin: 0 10px;
 }
 
-#registration-master-view {
+.master-view {
     background-color: #fff;
     border: 1px solid;
     display: block;
@@ -35,15 +35,15 @@
     background-color: skyblue;
 }
 
-#registration-master-view > li {
+.master-view > li {
     border-bottom: 1px solid black;
 }
 
-#registration-master-view > li:last-child {
+.master-view > li:last-child {
     border: 0 none;
 }
 
-#registration-detail-view {
+.detail-view {
     background-color: white;
     height: 100%;
     margin: 0 0 0 300px;
