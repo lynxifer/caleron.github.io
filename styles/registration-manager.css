@@ -31,41 +31,41 @@
     border: 1px solid;
 }
 
-.registration-module-list-item {
+.detail-list-item {
     border-bottom: 1px solid black;
 }
 
-.registration-module-list-item:last-child {
+.detail-list-item:last-child {
     border-bottom: 0 none;
 }
 
-.registration-module-list-item-header {
+.detail-list-item-header {
     cursor: pointer;
     padding: 10px 20px;
 }
 
-.registration-module-list-item-right-box {
+.detail-list-item-right-box {
     float: right;
 }
 
-.registration-module-list-item-show {
+.detail-list-item-show {
     text-decoration: underline;
 }
 
-.registration-module-list-item-details {
+.detail-list-item-details {
     display: none;
 }
 
-.registration-module-list-item-details table {
+.detail-list-item-details table {
     margin-left: 10px;
 }
-.registration-module-list-item-details th {
+.detail-list-item-details th {
     min-width: 180px;
 }
-.registration-module-list-item-details-button-box {
+.detail-list-item-details-right-box {
     height: 38px;
 }
-.registration-module-list-item-details button {
+.detail-list-item-details button {
     float: right;
     margin-right: 10px;
 }
