@@ -17,6 +17,7 @@
     <script src="libs/handlebars-v4.0.2.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/init.js"></script>
+    <script src="scripts/dashboard.js"></script>
     <script src="scripts/module-registration.js"></script>
 </head>
 <body id="luchs-body">
@@ -56,16 +57,16 @@
 <div id="dashboard-view" class="view-container">
     <table>
         <tr>
-            <td>Veranstaltungen verwalten</td>
-            <td>Deine Veranstaltungen</td>
-            <td>Kalender</td>
-            <td>@</td>
+            <td data-type="registration">Veranstaltungen verwalten</td>
+            <td data-type="events">Deine Veranstaltungen</td>
+            <td data-type="calendar">Kalender</td>
+            <td data-type="messaging">@</td>
         </tr>
         <tr>
-            <td>News</td>
-            <td>Konto</td>
-            <td>Dein Plan</td>
-            <td>Hilfe</td>
+            <td data-type="news">News</td>
+            <td data-type="account">Konto</td>
+            <td data-type="plan">Dein Plan</td>
+            <td data-type="help">Hilfe</td>
         </tr>
     </table>
 </div>
@@ -76,24 +77,6 @@
 
 <script id="md-view-template" type="text/x-handlebars-template">
     <ul class="master-view">
-        <li>
-            <div>Pflichtmodule</div>
-            <ul class="master-sub-list">
-                <li>Unterpunkt</li>
-            </ul>
-        </li>
-        <li>
-            <div>Wahlpflichtmodule</div>
-            <ul class="master-sub-list">
-                <li>Unterpunkt</li>
-            </ul>
-        </li>
-        <li>
-            <div>Freier Wahlbereich</div>
-            <ul class="master-sub-list">
-                <li>Unterpunkt</li>
-            </ul>
-        </li>
     </ul>
     <div class="detail-view">
 
@@ -232,7 +215,6 @@
             </table>
         </div>
     </div>
-
 </div>
 
 </body>

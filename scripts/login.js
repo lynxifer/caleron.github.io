@@ -10,7 +10,8 @@ loginController.init = function () {
 /**
  * Prüft, ob bereits eine Login existiert zeigt bei Bedarf das Dashboard an
  */
-loginController.autoLogin = function () {
+loginController.dbReady = function () {
+    console.log("DB is ready");
     if (DB.User.me) {
         loginController.loginSuccess();
     }
