@@ -17,9 +17,10 @@ moduleRegistrationController.init = function () {
         credits: 3,
         responsible: "Axel",
         precondition: "nix",
-        courses: "Vorlesung 1 <br> Übung 1",
+        courses: "Vorlesung 1 <br> &Uuml;bung 1",
         description: "Axel bringt euch alles bei"
     };
+
     registrationView.find(".detail-view").html(detailListItemTemplate(listItemContext));
     registrationView.find(".detail-view").append(detailListItemTemplate(listItemContext));
     registrationView.find(".detail-view").append(detailListItemTemplate(listItemContext));

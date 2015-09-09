@@ -26,3 +26,8 @@ viewController.showView = function (view) {
             break;
     }
 };
+
+viewController.dashBoardClick = function () {
+    var tileType = $(this).data("type");
+    viewController.showView(tileType);
+};
