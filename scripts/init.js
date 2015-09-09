@@ -3,22 +3,12 @@ var init = {};
  * Wird ausgefuehrt, wenn das Dokument geladen ist
  */
 $(document).ready(function () {
-    /**
-     * Variable aus dem LocalStorage
-     * Setzen mit localStorage.setItem("currentView", "login");
-     */
-    var currentView = localStorage.getItem("currentView");
+    viewController.showView("login");
 
-    //nur Ausführen, wenn Variable im localStorage vorhanden
-    if (currentView) {
-        viewController.showView(currentView);
-    } else {
-        viewController.showView("login");
-    }
+    init.assignHandlers();
 
     DB.connect("http://luchs.baqend.com");
 
-    init.assignHandlers();
 });
 
 /**
@@ -26,6 +16,14 @@ $(document).ready(function () {
  */
 init.assignHandlers = function () {
     DB.ready(loginController.autoLogin);
+
+    $("#header-logo").on("click", function () {
+        if (DB.User.me) {
+            viewController.showView("dashboard");
+        } else {
+            viewController.showView("login");
+        }
+    });
 
     $("#login-view-form").submit(loginController.login);
 
