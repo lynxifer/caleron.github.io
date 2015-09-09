@@ -15,6 +15,7 @@
 
 .master-sub-list {
     padding-left: 0;
+    display: none;
 }
 
 .master-sub-list > li {

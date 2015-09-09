@@ -15,7 +15,7 @@ $(document).ready(function () {
  * Setzt alle Handler
  */
 init.assignHandlers = function () {
-    DB.ready(loginController.autoLogin);
+    DB.ready(loginController.dbReady);
 
     $("#header-logo").on("click", function () {
         if (DB.User.me) {
