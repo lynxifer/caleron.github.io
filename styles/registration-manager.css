@@ -13,11 +13,30 @@
     width: 300px;
 }
 
-#registration-master-view > li {
-    border-bottom: 1px solid black;
+.master-sub-list {
+    padding-left: 0;
+}
+
+.master-sub-list > li {
+    padding: 5px 0 5px 30px;
+}
+
+.master-view li, .master-view span {
     cursor: pointer;
     list-style: outside none none;
-    padding: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.master-view div {
+    padding: 10px 5px;
+}
+
+.master-sub-list li:hover, .master-view div:hover {
+    background-color: skyblue;
+}
+
+#registration-master-view > li {
+    border-bottom: 1px solid black;
 }
 
 #registration-master-view > li:last-child {
@@ -59,12 +78,15 @@
 .detail-list-item-details table {
     margin-left: 10px;
 }
+
 .detail-list-item-details th {
     min-width: 180px;
 }
+
 .detail-list-item-details-right-box {
     height: 38px;
 }
+
 .detail-list-item-details button {
     float: right;
     margin-right: 10px;
