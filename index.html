@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="styles/calendar.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
 
-
     <script src="libs/jquery-2.1.4.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
     <script src="scripts/viewController.js"></script>
@@ -71,59 +70,76 @@
     </table>
 </div>
 
-<div id="registration-manager-view" class="view-container">
-    <ul id="registration-master-view">
-        <li><span>Pflichtmodule</span>
-            <ul>
-                <li>Diesdas</li>
-                <li>Diesdas</li>
-                <li>Diesdas</li>
+<div id="registration-manager-view" class="view-container md-view">
+
+</div>
+
+<script id="md-view-template" type="text/x-handlebars-template">
+    <ul class="master-view">
+        <li>
+            <div>Pflichtmodule</div>
+            <ul class="master-sub-list">
+                <li>Unterpunkt</li>
             </ul>
         </li>
-        <li><span>Wahlpflichtmodule</span></li>
+        <li>
+            <div>Wahlpflichtmodule</div>
+            <ul class="master-sub-list">
+                <li>Unterpunkt</li>
+            </ul>
+        </li>
+        <li>
+            <div>Freier Wahlbereich</div>
+            <ul class="master-sub-list">
+                <li>Unterpunkt</li>
+            </ul>
+        </li>
     </ul>
-    <div id="registration-detail-view">
-        <div class="detail-list-item">
-            <div class="detail-list-item-header">
-                <span class="detail-list-item-title">{{title}}</span>
+    <div class="detail-view">
+
+    </div>
+</script>
+
+<script id="detail-list-item-template" type="text/x-handlebars-template">
+    <div class="detail-list-item">
+        <div class="detail-list-item-header">
+            <span class="detail-list-item-title">{{title}}</span>
                 <span class="detail-list-item-right-box">
                     <span class="detail-list-item-lp">{{credits}} LP</span>
                     <span class="detail-list-item-show">Anzeigen</span>
                 </span>
-            </div>
-            <div class="detail-list-item-details">
+        </div>
+        <div class="detail-list-item-details">
 
-                <table>
-                    <tr>
-                        <th>Modulveranwortlicher:</th>
-                        <td>{{responsible}}</td>
-                    </tr>
-                    <tr>
-                        <th>Credits:</th>
-                        <td>{{credits}}</td>
-                    </tr>
-                    <tr>
-                        <th>Modulvoraussetzungen:</th>
-                        <td>{{precondition}}</td>
-                    </tr>
-                    <tr>
-                        <th>Veranstaltungen:</th>
-                        <td>{{courses}}</td>
-                    </tr>
-                    <tr>
-                        <th>Modulbeschreibung:</th>
-                        <td>{{description}}</td>
-                    </tr>
-                </table>
-                <div class="detail-list-item-details-right-box">
-                    <button class="btn btn-default">Anmelden</button>
-                </div>
+            <table>
+                <tr>
+                    <th>Modulveranwortlicher:</th>
+                    <td>{{responsible}}</td>
+                </tr>
+                <tr>
+                    <th>Credits:</th>
+                    <td>{{credits}}</td>
+                </tr>
+                <tr>
+                    <th>Modulvoraussetzungen:</th>
+                    <td>{{precondition}}</td>
+                </tr>
+                <tr>
+                    <th>Veranstaltungen:</th>
+                    <td>{{{courses}}}</td>
+                </tr>
+                <tr>
+                    <th>Modulbeschreibung:</th>
+                    <td>{{description}}</td>
+                </tr>
+            </table>
+            <div class="detail-list-item-details-right-box">
+                <button class="btn btn-default">Anmelden</button>
             </div>
         </div>
-        <div class="detail-list-item">Softwareentwicklung 2</div>
-        <div class="detail-list-item">Softwareentwicklung 2</div>
     </div>
 </div>
+</script>
 
 <div id="calendar-view" class="view-container">
     <div id="calendar-view-background">
@@ -146,5 +162,6 @@
     </div>
 
 </div>
+
 </body>
 </html>
