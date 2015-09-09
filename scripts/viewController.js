@@ -21,5 +21,8 @@ viewController.showView = function (view) {
             $("#registration-manager-view").css("display", "block");
             moduleRegistrationController.init();
             break;
+        case "calendar":
+            $("#calendar-view").css("display", "block");
+            break;
     }
 };
