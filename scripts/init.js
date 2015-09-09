@@ -1,6 +1,6 @@
 var init = {};
 /**
- * Wird ausgef�hrt, wenn das Dokument geladen ist
+ * Wird ausgefuehrt, wenn das Dokument geladen ist
  */
 $(document).ready(function () {
     /**
@@ -21,6 +21,9 @@ $(document).ready(function () {
     init.assignHandlers();
 });
 
+/**
+ * Setzt alle Handler
+ */
 init.assignHandlers = function () {
     DB.ready(loginController.autoLogin);
 

@@ -1,7 +1,9 @@
-
 var viewController = {};
 
-
+/**
+ * Dient zum wechseln der Views
+ * @param {String} view Der Name der View
+ */
 viewController.showView = function (view) {
     $(".view-container").css("display", "none");
 
