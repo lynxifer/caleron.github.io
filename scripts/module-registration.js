@@ -13,7 +13,7 @@ moduleRegistrationController.init = function () {
     registrationView.html(mdViewTemplate({}));
 
     var listItemContext = {
-      title: "SE1",
+        title: "SE1",
         credits: 3,
         responsible: "Axel",
         precondition: "nix",
