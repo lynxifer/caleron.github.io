@@ -26,13 +26,17 @@ moduleRegistrationController.loadMasterView = function () {
         "Freier Wahlbereich"
     ];
 
+    //Kategorien einfügen
     for (var i = 0; i < categories.length; i++) {
         masterView.append("<li><div>" + categories[i] + "</div><ul class='master-sub-list'></ul></li>");
     }
+
     masterSubLists = registrationView.find(".master-sub-list");
 
+    //Onclick-Handler für Kategorien-Boxen
     masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
 
+    //Alle normalen Fakultäten zu Sublisten hinzufügen
     DB.Faculty.find().resultList(function (result) {
         result.forEach(function (faculty) {
             masterSubLists.append("<li>" + faculty.name + "</li>");
@@ -40,13 +44,28 @@ moduleRegistrationController.loadMasterView = function () {
     });
 };
 
-moduleRegistrationController.loadDetailView = function (filter) {
+moduleRegistrationController.loadDetailView = function (category, filterFaculty) {
 
     var detailListItemSource = $("#detail-list-item-template").html(),
         detailListItemTemplate = Handlebars.compile(detailListItemSource),
-        registrationView = $("#registration-manager-view");
+        datailView = $("#registration-manager-view").find(".detail-view");
 
-    DB.Module.find().resultList(function (result) {
+    var userMajor = DB.User.me.major,
+        request;
+
+    request = DB.Module.find();
+
+    if (category) {
+        request = request.in(category, userMajor)
+    } else {
+        request = request.in("isRequiredInMajor", userMajor)
+    }
+
+    if (filterFaculty) {
+        request = request.in("possibleFaculties", filterFaculty);
+    }
+
+    request.resultList(function (result) {
         result.forEach(function (module) {
 
             var listItemContext = {
@@ -58,7 +77,7 @@ moduleRegistrationController.loadDetailView = function (filter) {
                 description: "Axel bringt euch alles bei"
             };
 
-            registrationView.find(".detail-view").append(detailListItemTemplate(listItemContext));
+            datailView.append(detailListItemTemplate(listItemContext));
         });
 
         $(".detail-list-item-header").on("click", function () {
@@ -76,4 +95,6 @@ moduleRegistrationController.onCategoryClick = function () {
     } else {
         masterSubList.slideUp();
     }
+
+    //moduleRegistrationController.loadDetailView($(this).data("category"), $(this).data("faculty"));
 };
