@@ -34,7 +34,7 @@ init.assignHandlers = function () {
 
     $("#dashboard-view").find("td").on("click", viewController.dashBoardClick);
 
-    $("#messaging-new-message-form").submit(messagesController.showNotification);
+    $("#messaging-new-message-form").submit(messagesController.sendMessages);
 };
 
 
