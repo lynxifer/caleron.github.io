@@ -5,15 +5,15 @@ var moduleRegistrationController = {};
  */
 moduleRegistrationController.init = function () {
     moduleRegistrationController.loadMasterView();
-    moduleRegistrationController.loadDetailView();
+
+    $("#registration-manager-view").find("div").first().click();
 };
 
 moduleRegistrationController.loadMasterView = function () {
     var mdViewSource = $("#md-view-template").html(),
         mdViewTemplate = Handlebars.compile(mdViewSource),
         registrationView = $("#registration-manager-view"),
-        masterView,
-        masterSubLists;
+        masterView;
 
     //Master-Detail-View erzeugen und einfügen
     registrationView.html(mdViewTemplate());
@@ -68,8 +68,8 @@ moduleRegistrationController.buildFaculties = function (parent) {
 
 /**
  * Lädt die Detail-View mit der entsprechenden Ansicht
- * @param {String} category Kategorie als Tabellenspalte
- * @param {String} filterFaculty ID der Fakultät
+ * @param {String=} category Kategorie als Tabellenspalte
+ * @param {String=} filterFaculty ID der Fakultät
  */
 moduleRegistrationController.loadDetailView = function (category, filterFaculty) {
 
@@ -126,8 +126,9 @@ moduleRegistrationController.onCategoryClick = function () {
     } else {
         masterSubList.slideUp();
     }
-
-    //moduleRegistrationController.loadDetailView($(this).data("category"), $(this).data("faculty"));
+    //Kategorie ist am <li>-Element
+    var category = $(this).parent().data("category");
+    moduleRegistrationController.loadDetailView(category);
 };
 
 /**
