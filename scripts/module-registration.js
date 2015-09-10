@@ -19,7 +19,16 @@ moduleRegistrationController.loadMasterView = function () {
     registrationView.html(mdViewTemplate());
 
     masterView = registrationView.find('.master-view');
+    moduleRegistrationController.buildCategories(masterView);
 
+    moduleRegistrationController.buildFaculties(masterView);
+};
+
+/**
+ * Fügt die Kategorien in die Masterview ein
+ * @param {element} parent Die Masterview
+ */
+moduleRegistrationController.buildCategories = function (parent) {
     var categories = [
         ["Pflichtmodule", "isRequiredInMajor"],
         ["Wahlpflichtmodule", "isChoiceInMajor"],
@@ -30,13 +39,16 @@ moduleRegistrationController.loadMasterView = function () {
     for (var i = 0; i < categories.length; i++) {
         $("<li><div>" + categories[i][0] + "</div><ul class='master-sub-list'></ul></li>")
             .data("category", categories[i][1])
-            .appendTo(masterView);
+            .appendTo(parent);
     }
+};
 
-    masterSubLists = registrationView.find(".master-sub-list");
-
-    //Onclick-Handler für Kategorien-Boxen
-    masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
+/**
+ * Baut die Fakultätenlisten und fügt die Click-Handler hinzu
+ * @param {element} parent Die Masterview
+ */
+moduleRegistrationController.buildFaculties = function (parent) {
+    var masterSubLists = parent.find(".master-sub-list");
 
     //Alle normalen Fakultäten zu Sublisten hinzufügen
     DB.Faculty.find().resultList(function (result) {
@@ -48,6 +60,9 @@ moduleRegistrationController.loadMasterView = function () {
 
         //Click-Handler für die Fakultäten
         masterSubLists.find("li").on("click", moduleRegistrationController.onFacultyClick);
+
+        //Onclick-Handler für Kategorien-Boxen
+        masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
     });
 };
 
