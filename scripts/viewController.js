@@ -27,6 +27,7 @@ viewController.showView = function (view) {
             break;
         case "news":
             $("#news-view").css("display", "block");
+            newsController.init();
             break;
     }
 };

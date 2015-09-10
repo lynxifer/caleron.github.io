@@ -9,6 +9,9 @@ newsController.loadNewsView = function(){
         newsViewTemplate = Handlebars.compile(newsViewSource),
         newsView = $("#news-view"),
         request;
+
+    newsView.empty();
+
     //News-View erzeugen und einfügen
     request = DB.News.find();
     request.resultList(function (result) {
@@ -16,7 +19,8 @@ newsController.loadNewsView = function(){
 
             var listItemContext = {
                 title: news.title,
-                content: news.content
+                content: news.content,
+                time: news.time
             };
             newsView.append(newsViewTemplate(listItemContext));
         });
