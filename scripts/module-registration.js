@@ -4,11 +4,15 @@ var moduleRegistrationController = {};
  * Wird bei dem Anzeigen der Modulanmeldungs-View ausgeführt
  */
 moduleRegistrationController.init = function () {
-    moduleRegistrationController.loadMasterView();
-
-    $("#registration-manager-view").find("div").first().click();
+    moduleRegistrationController.loadMasterView().then(function () {
+        $("#registration-manager-view").find("div").first().click();
+    });
 };
 
+/**
+ * Lädt die Master-View
+ * @returns {Promise}
+ */
 moduleRegistrationController.loadMasterView = function () {
     var mdViewSource = $("#md-view-template").html(),
         mdViewTemplate = Handlebars.compile(mdViewSource),
@@ -21,7 +25,7 @@ moduleRegistrationController.loadMasterView = function () {
     masterView = registrationView.find('.master-view');
     moduleRegistrationController.buildCategories(masterView);
 
-    moduleRegistrationController.buildFaculties(masterView);
+    return moduleRegistrationController.buildFaculties(masterView);
 };
 
 /**
@@ -46,18 +50,19 @@ moduleRegistrationController.buildCategories = function (parent) {
 /**
  * Baut die Fakultätenlisten und fügt die Click-Handler hinzu
  * @param {element} parent Die Masterview
+ * @return {Promise}
  */
 moduleRegistrationController.buildFaculties = function (parent) {
     var masterSubLists = parent.find(".master-sub-list");
 
     //Alle normalen Fakultäten zu Sublisten hinzufügen
-    DB.Faculty.find().resultList(function (result) {
+    return DB.Faculty.find().resultList(function (result) {
         result.forEach(function (faculty) {
             $("<li>" + faculty.name + "</li>")
                 .data("faculty", faculty.toString())
                 .appendTo(masterSubLists);
         });
-
+    }).then(function () {
         //Click-Handler für die Fakultäten
         masterSubLists.find("li").on("click", moduleRegistrationController.onFacultyClick);
 
@@ -93,7 +98,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
         request = request.in("possibleFaculties", filterFaculty);
     }
 
-    request.resultList(function (result) {
+    return request.resultList(function (result) {
         result.forEach(function (module) {
 
             var listItemContext = {
@@ -108,6 +113,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
             detailView.append(detailListItemTemplate(listItemContext));
         });
 
+    }).then(function () {
         $(".detail-list-item-header").on("click", function () {
             $(this).next().slideToggle();
         });
@@ -129,6 +135,7 @@ moduleRegistrationController.onCategoryClick = function () {
     //Kategorie ist am <li>-Element
     var category = $(this).parent().data("category");
     moduleRegistrationController.loadDetailView(category);
+    moduleRegistrationController.masterViewItemSelected($(this));
 };
 
 /**
@@ -139,4 +146,11 @@ moduleRegistrationController.onFacultyClick = function () {
         faculty = $(this).data("faculty");
 
     moduleRegistrationController.loadDetailView(category, faculty);
+    moduleRegistrationController.masterViewItemSelected($(this));
+};
+
+moduleRegistrationController.masterViewItemSelected = function (element) {
+  $(".master-view").find(".selected").removeClass("selected");
+
+    element.addClass("selected");
 };

@@ -44,6 +44,11 @@
     border: 0 none;
 }
 
+.master-view .selected {
+    background-color: #2a2a2a;
+    color: white;
+}
+
 .detail-view {
     background-color: white;
     height: 100%;
