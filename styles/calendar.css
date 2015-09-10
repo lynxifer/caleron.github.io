@@ -68,12 +68,15 @@
     border: 1px solid;
 }
 
-#calendar-table {
+#table-div {
     position: absolute;
+    margin-left:50px;
+    top: 0;
+}
+#calendar-table {
     height: 600px;
     table-layout: fixed;
     width:100%;
-    top: 0;
 /*    margin-left: 50px;*/
 }
 
