@@ -4,9 +4,10 @@
     margin: 0;
 }
 
-header {
+#luchs-header {
     background-color: #2a2a2a;
     height: 50px;
+    display: flex;
 }
 
 #header-logo {
@@ -25,8 +26,10 @@ header {
     padding-top: 5px;
     float: left;
     cursor: pointer;
+    flex: 1 1 auto;
 }
 
 #header-user-button {
     float: right;
+    margin: 8px 40px 0 0;
 }
