@@ -1,6 +1,7 @@
 #calendar-view {
     background-color : darkgrey;
-    height: 830px;
+    /*height: 830px;*/
+    height: 100%;
     /*margin: 0 10px;*/
 }
 
@@ -21,7 +22,7 @@
 
 #calendar-header {
     position: relative;
-    float: top;
+/*    float: top;*/
     height: 25px;
 }
 
@@ -29,7 +30,7 @@
     position: absolute;
     table-layout: fixed;
     width:100%;
-    top: 0;
+/*    top: 0;*/
 /*    margin-left: 50px;*/
 }
 
@@ -39,6 +40,7 @@
 
 #calendar-timeline {
     float: left;
+    margin-top:25px;
     margin-left: 5px;
     width: 40px;
     border-right: 1px solid;
@@ -83,6 +85,6 @@
 .calendar-day-column {
     border-right: 3px solid ;
     height: 600px;
-    position: relative;
+    /*position: relative;*/
 
 }
