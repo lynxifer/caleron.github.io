@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/registration-manager.css">
     <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/news.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
 
     <script src="libs/jquery-2.1.4.js"></script>
@@ -21,6 +22,7 @@
     <script src="scripts/init.js"></script>
     <script src="scripts/dashboard.js"></script>
     <script src="scripts/module-registration.js"></script>
+    <script src="scripts/newsController.js"></script>
 </head>
 <body id="luchs-body">
 <header id="luchs-header">
@@ -95,7 +97,6 @@
                 </span>
         </div>
         <div class="detail-list-item-details">
-
             <table>
                 <tr>
                     <th>Modulveranwortlicher:</th>
@@ -216,6 +217,20 @@
             </table>
         </div>
     </div>
+</div>
+
+<script id="news-view-template" type="text/x-handlebars-template">
+    <div class="news-rahmen">
+        <div class="news-content">
+            <h4>{{titel}}</h4>
+
+            <p>{{content}}</p>
+        </div>
+    </div>
+</script>
+
+<div id="news-view" class="view-container">
+
 </div>
 
 </body>

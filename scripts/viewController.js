@@ -1,7 +1,7 @@
 var viewController = {};
 
 /**
- * Dient zum wechseln der Views
+ * Dient zum Wechseln der Views
  * @param {String} view Der Name der View
  */
 viewController.showView = function (view) {
@@ -23,6 +23,9 @@ viewController.showView = function (view) {
             break;
         case "calendar":
             $("#calendar-view").css("display", "block");
+            break;
+        case "news":
+            $("#news-view").css("display", "block");
             break;
     }
 };
