@@ -9,6 +9,7 @@ $(document).ready(function () {
 
     DB.connect("http://luchs.baqend.com");
 
+    init.windowResized();
 });
 
 /**
@@ -16,6 +17,8 @@ $(document).ready(function () {
  */
 init.assignHandlers = function () {
     DB.ready(loginController.dbReady);
+
+    $(window).resize(init.windowResized);
 
     $("#header-logo").on("click", function () {
         if (DB.User.me) {
@@ -32,4 +35,9 @@ init.assignHandlers = function () {
     $("#dashboard-view").find("td").on("click", viewController.dashBoardClick);
 
     $("#messaging-new-message-form").submit(messagesController.showNotification);
+};
+
+
+init.windowResized = function () {
+    $(".view-container").css("height", ($(window).height() - 70) + "px");
 };

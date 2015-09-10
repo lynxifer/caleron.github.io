@@ -4,54 +4,87 @@ var moduleRegistrationController = {};
  * Wird bei dem Anzeigen der Modulanmeldungs-View ausgeführt
  */
 moduleRegistrationController.init = function () {
-    moduleRegistrationController.loadMasterView();
-    moduleRegistrationController.loadDetailView();
+    moduleRegistrationController.loadMasterView().then(function () {
+        $("#registration-manager-view").find("div").first().click();
+    });
 };
 
+/**
+ * Lädt die Master-View
+ * @returns {Promise}
+ */
 moduleRegistrationController.loadMasterView = function () {
     var mdViewSource = $("#md-view-template").html(),
         mdViewTemplate = Handlebars.compile(mdViewSource),
         registrationView = $("#registration-manager-view"),
-        masterView,
-        masterSubLists;
+        masterView;
 
     //Master-Detail-View erzeugen und einfügen
     registrationView.html(mdViewTemplate());
 
     masterView = registrationView.find('.master-view');
+    moduleRegistrationController.buildCategories(masterView);
 
+    return moduleRegistrationController.buildFaculties(masterView);
+};
+
+/**
+ * Fügt die Kategorien in die Masterview ein
+ * @param {element} parent Die Masterview
+ */
+moduleRegistrationController.buildCategories = function (parent) {
     var categories = [
-        "Pflichtmodule",
-        "Wahlpflichtmodule",
-        "Freier Wahlbereich"
+        ["Pflichtmodule", "isRequiredInMajor"],
+        ["Wahlpflichtmodule", "isChoiceInMajor"],
+        ["Freier Wahlbereich", "isFreeChoiceInMajor"]
     ];
 
     //Kategorien einfügen
     for (var i = 0; i < categories.length; i++) {
-        masterView.append("<li><div>" + categories[i] + "</div><ul class='master-sub-list'></ul></li>");
+        $("<li><div>" + categories[i][0] + "</div><ul class='master-sub-list'></ul></li>")
+            .data("category", categories[i][1])
+            .appendTo(parent);
     }
+};
 
-    masterSubLists = registrationView.find(".master-sub-list");
-
-    //Onclick-Handler für Kategorien-Boxen
-    masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
+/**
+ * Baut die Fakultätenlisten und fügt die Click-Handler hinzu
+ * @param {element} parent Die Masterview
+ * @return {Promise}
+ */
+moduleRegistrationController.buildFaculties = function (parent) {
+    var masterSubLists = parent.find(".master-sub-list");
 
     //Alle normalen Fakultäten zu Sublisten hinzufügen
-    DB.Faculty.find().resultList(function (result) {
+    return DB.Faculty.find().resultList(function (result) {
         result.forEach(function (faculty) {
-            masterSubLists.append("<li>" + faculty.name + "</li>");
+            $("<li>" + faculty.name + "</li>")
+                .data("faculty", faculty.toString())
+                .appendTo(masterSubLists);
         });
+    }).then(function () {
+        //Click-Handler für die Fakultäten
+        masterSubLists.find("li").on("click", moduleRegistrationController.onFacultyClick);
+
+        //Onclick-Handler für Kategorien-Boxen
+        masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
     });
 };
 
+/**
+ * Lädt die Detail-View mit der entsprechenden Ansicht
+ * @param {String=} category Kategorie als Tabellenspalte
+ * @param {String=} filterFaculty ID der Fakultät
+ */
 moduleRegistrationController.loadDetailView = function (category, filterFaculty) {
 
     var detailListItemSource = $("#detail-list-item-template").html(),
         detailListItemTemplate = Handlebars.compile(detailListItemSource),
-        datailView = $("#registration-manager-view").find(".detail-view");
-
-    var userMajor = DB.User.me.major,
+        detailView = $("#registration-manager-view").find(".detail-view"),
+        userMajor = DB.User.me.major,
         request;
+
+    detailView.empty();
 
     request = DB.Module.find();
 
@@ -65,7 +98,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
         request = request.in("possibleFaculties", filterFaculty);
     }
 
-    request.resultList(function (result) {
+    return request.resultList(function (result) {
         result.forEach(function (module) {
 
             var listItemContext = {
@@ -77,15 +110,19 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
                 description: "Axel bringt euch alles bei"
             };
 
-            datailView.append(detailListItemTemplate(listItemContext));
+            detailView.append(detailListItemTemplate(listItemContext));
         });
 
+    }).then(function () {
         $(".detail-list-item-header").on("click", function () {
             $(this).next().slideToggle();
         });
     });
 };
 
+/**
+ * Wird beim Klick auf eine Kategorie ausgelöst
+ */
 moduleRegistrationController.onCategoryClick = function () {
     var masterSubList = $(this).next();
 
@@ -95,6 +132,25 @@ moduleRegistrationController.onCategoryClick = function () {
     } else {
         masterSubList.slideUp();
     }
+    //Kategorie ist am <li>-Element
+    var category = $(this).parent().data("category");
+    moduleRegistrationController.loadDetailView(category);
+    moduleRegistrationController.masterViewItemSelected($(this));
+};
 
-    //moduleRegistrationController.loadDetailView($(this).data("category"), $(this).data("faculty"));
+/**
+ * Wird beim Klick auf eine Fakultät ausgelöst
+ */
+moduleRegistrationController.onFacultyClick = function () {
+    var category = $(this).closest(".master-sub-list").parent().data("category"),
+        faculty = $(this).data("faculty");
+
+    moduleRegistrationController.loadDetailView(category, faculty);
+    moduleRegistrationController.masterViewItemSelected($(this));
+};
+
+moduleRegistrationController.masterViewItemSelected = function (element) {
+  $(".master-view").find(".selected").removeClass("selected");
+
+    element.addClass("selected");
 };

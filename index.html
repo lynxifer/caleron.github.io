@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luchs</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/registration-manager.css">
     <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/news.css">
+    <link rel="stylesheet" href="styles/master-detail-view.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
 
     <script src="libs/jquery-2.1.4.js"></script>
@@ -19,6 +23,7 @@
     <script src="scripts/init.js"></script>
     <script src="scripts/dashboard.js"></script>
     <script src="scripts/module-registration.js"></script>
+    <script src="scripts/newsController.js"></script>
     <script src="scripts/messages.js"></script>
 
 </head>
@@ -135,6 +140,26 @@
     </div>
 
     <div id="calendar-detail-view">
+
+        <div id="calendar-timeline">
+            <div>07:00</div>
+            <div>08:00</div>
+            <div>09:00</div>
+            <div>10:00</div>
+            <div>11:00</div>
+            <div>12:00</div>
+            <div>13:00</div>
+            <div>14:00</div>
+            <div>15:00</div>
+            <div>16:00</div>
+            <div>17:00</div>
+            <div>18:00</div>
+            <div>19:00</div>
+            <div>20:00</div>
+            <div>21:00</div>
+            <div>22:00</div>
+        </div>
+
         <div id="calendar-header">
             <table id="calendar-header-table">
                 <tr>
@@ -150,24 +175,6 @@
         </div>
 
         <div id="calendar-wrapper">
-            <div id="calendar-timeline">
-                <div>07:00</div>
-                <div>08:00</div>
-                <div>09:00</div>
-                <div>10:00</div>
-                <div>11:00</div>
-                <div>12:00</div>
-                <div>13:00</div>
-                <div>14:00</div>
-                <div>15:00</div>
-                <div>16:00</div>
-                <div>17:00</div>
-                <div>18:00</div>
-                <div>19:00</div>
-                <div>20:00</div>
-                <div>21:00</div>
-                <div>22:00</div>
-            </div>
 
             <div id="calendar-content">
                 <div></div>
@@ -186,37 +193,50 @@
                 <div></div>
                 <div></div>
                 <div></div>
-                <div></div>
             </div>
-
-            <table id="calendar-table">
-                <tr>
-                    <td></td>
-                    <td>
-                        <div id="calendar-column-day1" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day2" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day3" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day4" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day5" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day6" class="calendar-day-column"></div>
-                    </td>
-                    <td>
-                        <div id="calendar-column-day7" class="calendar-day-column"></div>
-                    </td>
-                </tr>
-            </table>
+            <div id="table-div">
+                <table id="calendar-table">
+                    <tr>
+                        <td>
+                            <div id="calendar-column-day1" class="calendar-day-column">123</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day2" class="calendar-day-column">456</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day3" class="calendar-day-column">789</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day4" class="calendar-day-column">abc</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day5" class="calendar-day-column">def</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day6" class="calendar-day-column">ghi</div>
+                        </td>
+                        <td>
+                            <div id="calendar-column-day7" class="calendar-day-column">jkl</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
+</div>
+
+<script id="news-view-template" type="text/x-handlebars-template">
+    <div class="news-rahmen">
+        <div class="news-content">
+            <h4>{{titel}}</h4>
+
+            <p>{{content}}</p>
+        </div>
+    </div>
+</script>
+
+<div id="news-view" class="view-container">
+
 </div>
 
 <div id="messaging-view" class="view-container">

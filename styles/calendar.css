@@ -1,6 +1,6 @@
 #calendar-view {
     background-color : darkgrey;
-    height: 500px;
+    height: 830px;
     /*margin: 0 10px;*/
 }
 
@@ -11,30 +11,78 @@
     float: left;
     height: 100%;
     padding: 10px;
-    width: 300px;
+    width: 200px;
     list-style-type: none;
 }
 
 #calendar-detail-view {
-    margin: 0 0 0 300px;
+    margin: 0 0 0 200px;
+}
+
+#calendar-header {
+    position: relative;
+    float: top;
+    height: 25px;
+}
+
+#calendar-header-table {
+    position: absolute;
+    table-layout: fixed;
+    width:100%;
+    top: 0;
+/*    margin-left: 50px;*/
+}
+
+#calendar-header-table th{
+    text-align: center;
+}
+
+#calendar-timeline {
+    float: left;
+    margin-left: 5px;
+    width: 40px;
+    border-right: 1px solid;
+}
+
+#calendar-timeline div {
+    height: 50px;
+    width: 40px;
+    border-top: 1px dotted;
 }
 
 #calendar-wrapper {
-    width: 100px;
+    position: relative;
+    width: 100%;
 }
+
 
 #calendar-content {
-    height: 20px;
+    margin-left: 50px;
+
+}
+#calendar-content div {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 25px;
+    background-color: white;
+    border: 1px solid;
 }
 
+#table-div {
+    position: absolute;
+    margin-left:50px;
+    top: 0;
+}
 #calendar-table {
     height: 600px;
-    position: absolute;
     table-layout: fixed;
+    width:100%;
+/*    margin-left: 50px;*/
 }
 
 .calendar-day-column {
-    border-right: 3px ;
+    border-right: 3px solid ;
     height: 600px;
     position: relative;
+
 }
