@@ -29,6 +29,11 @@ viewController.showView = function (view) {
             $("#news-view").css("display", "block");
             newsController.init();
             break;
+        case "messaging":
+            $("#messaging-view").css("display", "block");
+            messagesController.init();
+            break;
+
     }
 };
 
