@@ -1,6 +1,40 @@
-#calendar-view-background {
+#calendar-view {
     background-color : darkgrey;
     height: 500px;
-    margin: 0 10px;
+    /*margin: 0 10px;*/
 }
 
+#calendar-master-view {
+    background-color: #fff;
+    border: 1px solid;
+    display: block;
+    float: left;
+    height: 100%;
+    padding: 10px;
+    width: 300px;
+    list-style-type: none;
+}
+
+#calendar-detail-view {
+    margin: 0 0 0 300px;
+}
+
+#calendar-wrapper {
+    width: 100px;
+}
+
+#calendar-content {
+    height: 20px;
+}
+
+#calendar-table {
+    height: 600px;
+    position: absolute;
+    table-layout: fixed;
+}
+
+.calendar-day-column {
+    border-right: 3px ;
+    height: 600px;
+    position: relative;
+}
