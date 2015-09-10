@@ -30,4 +30,6 @@ init.assignHandlers = function () {
     $("#logout-button").on("click", loginController.logout);
 
     $("#dashboard-view").find("td").on("click", viewController.dashBoardClick);
+
+    $("#messaging-new-message-form").submit(messagesController.showNotification);
 };
