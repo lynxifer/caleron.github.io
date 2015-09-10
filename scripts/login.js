@@ -1,18 +1,26 @@
-/**
- * Created by 3buchhar on 08.09.2015.
- */
 var loginController = {};
 
+/**
+ * Wird bei dem Anzeigen des Dashboards ausgeführt
+ */
 loginController.init = function () {
     $("#header-user-button").css("visibility", "hidden");
 };
 
-loginController.autoLogin = function () {
+/**
+ * Prüft, ob bereits eine Login existiert zeigt bei Bedarf das Dashboard an
+ */
+loginController.dbReady = function () {
+    console.log("DB is ready");
     if (DB.User.me) {
-        viewController.showView("dashboard");
+        loginController.loginSuccess();
     }
 };
 
+/**
+ * Wird ausgefuehrt, wenn submit beim Login-Formular ausgeloest wird
+ * @param {Event} event onsubmit-Event
+ */
 loginController.login = function (event) {
     event.preventDefault();
 
@@ -20,13 +28,26 @@ loginController.login = function (event) {
     var password = $("#login-password-box").val();
 
     DB.User.login(username, password).then(function () {
-        $("#header-user-button").css("visibility", "visible");
-        viewController.showView("dashboard");
+        loginController.loginSuccess();
     }, function () {
         alert("Login fehlgeschlagen!");
     });
 };
 
+/**
+ * Zeigt den Logout-Button an und wechselt zum Dashboard
+ */
+loginController.loginSuccess = function () {
+    var username = DB.User.me.username;
+
+    $("#header-user-button").css("visibility", "visible");
+    $("#header-username-label").text(username);
+    viewController.showView("dashboard");
+};
+
+/**
+ * Beendet die aktuelle Sitzung und zeigt den Loginscreen an
+ */
 loginController.logout = function () {
     DB.User.logout().then(function () {
         viewController.showView("login");

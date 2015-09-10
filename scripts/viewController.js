@@ -1,7 +1,9 @@
-
 var viewController = {};
 
-
+/**
+ * Dient zum wechseln der Views
+ * @param {String} view Der Name der View
+ */
 viewController.showView = function (view) {
     $(".view-container").css("display", "none");
 
@@ -13,9 +15,19 @@ viewController.showView = function (view) {
             break;
         case "dashboard":
             $("#dashboard-view").css("display", "block");
+            dashboardController.init();
             break;
         case "registration":
             $("#registration-manager-view").css("display", "block");
+            moduleRegistrationController.init();
+            break;
+        case "calendar":
+            $("#calendar-view").css("display", "block");
             break;
     }
+};
+
+viewController.dashBoardClick = function () {
+    var tileType = $(this).data("type");
+    viewController.showView(tileType);
 };

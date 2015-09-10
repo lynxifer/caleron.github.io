@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luchs</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/registration-manager.css">
+    <link rel="stylesheet" href="styles/calendar.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
 
     <script src="libs/jquery-2.1.4.js"></script>
@@ -16,6 +19,8 @@
     <script src="libs/handlebars-v4.0.2.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/init.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/module-registration.js"></script>
 </head>
 <body id="luchs-body">
 <header id="luchs-header">
@@ -26,7 +31,8 @@
     <div class="btn-group" id="header-user-button">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-            Benutzername <span class="caret"></span>
+            <span id="header-username-label"></span>
+            <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
             <li><a href="#" id="logout-button">Logout</a></li>
@@ -53,30 +59,164 @@
 <div id="dashboard-view" class="view-container">
     <table>
         <tr>
-            <td>Veranstaltungen verwalten</td>
-            <td>Deine Veranstaltungen</td>
-            <td>Kalender</td>
-            <td>@</td>
+            <td data-type="registration">Veranstaltungen verwalten</td>
+            <td data-type="events">Deine Veranstaltungen</td>
+            <td data-type="calendar">Kalender</td>
+            <td data-type="messaging">@</td>
         </tr>
         <tr>
-            <td>News</td>
-            <td>Konto</td>
-            <td>Dein Plan</td>
-            <td>Hilfe</td>
+            <td data-type="news">News</td>
+            <td data-type="account">Konto</td>
+            <td data-type="plan">Dein Plan</td>
+            <td data-type="help">Hilfe</td>
         </tr>
     </table>
 </div>
 
-<div id="registration-manager-view" class="view-container">
-    <ul id="registration-master-view">
-        <li>Pflichtmodule</li>
-        <li>Wahlpflichtmodule</li>
+<div id="registration-manager-view" class="view-container md-view">
+
+</div>
+
+<script id="md-view-template" type="text/x-handlebars-template">
+    <ul class="master-view">
     </ul>
-    <div id="registration-detail-view">
-        <div class="registration-module-list-item">Softwareentwicklung 1</div>
-        <div class="registration-module-list-item">Softwareentwicklung 2</div>
-        <div class="registration-module-list-item">Formale Grundlagen der Informatik 1</div>
+    <div class="detail-view">
+
+    </div>
+</script>
+
+<script id="detail-list-item-template" type="text/x-handlebars-template">
+    <div class="detail-list-item">
+        <div class="detail-list-item-header">
+            <span class="detail-list-item-title">{{title}}</span>
+                <span class="detail-list-item-right-box">
+                    <span class="detail-list-item-lp">{{credits}} LP</span>
+                    <span class="detail-list-item-show">Anzeigen</span>
+                </span>
+        </div>
+        <div class="detail-list-item-details">
+
+            <table>
+                <tr>
+                    <th>Modulveranwortlicher:</th>
+                    <td>{{responsible}}</td>
+                </tr>
+                <tr>
+                    <th>Credits:</th>
+                    <td>{{credits}}</td>
+                </tr>
+                <tr>
+                    <th>Modulvoraussetzungen:</th>
+                    <td>{{precondition}}</td>
+                </tr>
+                <tr>
+                    <th>Veranstaltungen:</th>
+                    <td>{{{courses}}}</td>
+                </tr>
+                <tr>
+                    <th>Modulbeschreibung:</th>
+                    <td>{{description}}</td>
+                </tr>
+            </table>
+            <div class="detail-list-item-details-right-box">
+                <button class="btn btn-default">Anmelden</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div id="calendar-view" class="view-container">
+    <div id="calendar-master-view">
+        <ul>
+            <li>Monatsansicht</li>
+            <li>Wochenansicht</li>
+            <li>Tagesansicht</li>
+        </ul>
+    </div>
+
+    <div id="calendar-detail-view">
+        <div id="calendar-header">
+            <table id="calendar-header-table">
+                <tr>
+                    <th>Mo</th>
+                    <th>Di</th>
+                    <th>Mi</th>
+                    <th>Do</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>So</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="calendar-wrapper">
+            <div id="calendar-timeline">
+                <div>07:00</div>
+                <div>08:00</div>
+                <div>09:00</div>
+                <div>10:00</div>
+                <div>11:00</div>
+                <div>12:00</div>
+                <div>13:00</div>
+                <div>14:00</div>
+                <div>15:00</div>
+                <div>16:00</div>
+                <div>17:00</div>
+                <div>18:00</div>
+                <div>19:00</div>
+                <div>20:00</div>
+                <div>21:00</div>
+                <div>22:00</div>
+            </div>
+
+            <div id="calendar-content">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <table id="calendar-table">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div id="calendar-column-day1" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day2" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day3" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day4" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day5" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day6" class="calendar-day-column"></div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day7" class="calendar-day-column"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

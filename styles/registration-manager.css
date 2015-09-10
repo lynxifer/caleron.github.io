@@ -1,40 +1,95 @@
 #registration-manager-view {
     height: 500px;
+    margin: 0 10px;
 }
 
-#registration-master-view {
+.master-view {
     background-color: #fff;
     border: 1px solid;
     display: block;
     float: left;
     height: 100%;
-    margin: 0 0 0 10px;
     padding: 0;
     width: 300px;
 }
 
-#registration-master-view > li {
-    border-bottom: 1px solid black;
-    cursor: pointer;
-    list-style: outside none none;
-    padding: 10px;
+.master-sub-list {
+    padding-left: 0;
+    display: none;
 }
 
-#registration-master-view > li:last-child {
+.master-sub-list > li {
+    padding: 5px 0 5px 30px;
+}
+
+.master-view li, .master-view span {
+    cursor: pointer;
+    list-style: outside none none;
+    transition: all 0.3s ease 0s;
+}
+
+.master-view div {
+    padding: 10px 5px;
+}
+
+.master-sub-list li:hover, .master-view div:hover {
+    background-color: skyblue;
+}
+
+.master-view > li {
+    border-bottom: 1px solid black;
+}
+
+.master-view > li:last-child {
     border: 0 none;
 }
 
-#registration-detail-view {
+.detail-view {
     background-color: white;
     height: 100%;
-    margin: 0 0 0 310px;
+    margin: 0 0 0 300px;
+    border: 1px solid;
+    overflow: auto;
 }
 
-.registration-module-list-item {
+.detail-list-item {
     border-bottom: 1px solid black;
+}
+
+.detail-list-item:last-child {
+    border-bottom: 0 none;
+}
+
+.detail-list-item-header {
+    cursor: pointer;
     padding: 10px 20px;
 }
 
-.registration-module-list-item:last-child {
-    border-bottom: 0 none;
+.detail-list-item-right-box {
+    float: right;
+}
+
+.detail-list-item-show {
+    text-decoration: underline;
+}
+
+.detail-list-item-details {
+    display: none;
+}
+
+.detail-list-item-details table {
+    margin-left: 10px;
+}
+
+.detail-list-item-details th {
+    min-width: 180px;
+}
+
+.detail-list-item-details-right-box {
+    height: 38px;
+}
+
+.detail-list-item-details button {
+    float: right;
+    margin-right: 10px;
 }
