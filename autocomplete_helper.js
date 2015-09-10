@@ -47,3 +47,27 @@ var DB = {
         
     }
 };
+
+/*
+ DB.modules.find().in("studiengang",stu).resultList().then(function(result) {
+ Promise.all(result.map(function(obj) {
+ return obj.studiengang.load();
+ }).then(function(fullResult) {
+
+ });;
+ });
+
+ DB.Module.load("40268900-9217-4e83-8f0f-193374d255c5",
+ function(obj) {obj.isRequiredInMajor.load().then(
+ function(resolvedObj) {
+ console.log(JSON.stringify(resolvedObj));
+ });
+ });
+
+ DB.Module.load("40268900-9217-4e83-8f0f-193374d255c5",
+ function(obj) {obj.load({depth: 1}).then(
+ function(resolvedObj) {
+ console.log(JSON.stringify(resolvedObj));
+ });
+ });
+ */
