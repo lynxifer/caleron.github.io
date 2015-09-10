@@ -23,6 +23,7 @@ viewController.showView = function (view) {
             break;
         case "calendar":
             $("#calendar-view").css("display", "block");
+            calendarController.init();
             break;
         case "news":
             $("#news-view").css("display", "block");

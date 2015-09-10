@@ -8,4 +8,6 @@ var calendarController = {};
  * Wird beim Anzeigen des calender-view ausgeführt
  */
 
-}
+calendarController.init = function () {
+
+};
