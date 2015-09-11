@@ -1,0 +1,11 @@
+.news-rahmen {
+    border-bottom: 1px solid;
+    border-bottom-width: 1px;
+
+}
+
+.news-item {
+
+    margin: 10px 200px;
+    background-color: #fff;
+}
