@@ -1,7 +1,7 @@
 var moduleRegistrationController = {};
 
 /**
- * Wird bei dem Anzeigen der Modulanmeldungs-View ausgeführt
+ * Wird bei dem Anzeigen der Modulanmeldungs-View ausgefÃ¼hrt
  */
 moduleRegistrationController.init = function () {
     moduleRegistrationController.loadMasterView().then(function () {
@@ -10,7 +10,7 @@ moduleRegistrationController.init = function () {
 };
 
 /**
- * Lädt die Master-View
+ * LÃ¤dt die Master-View
  * @returns {Promise}
  */
 moduleRegistrationController.loadMasterView = function () {
@@ -19,7 +19,7 @@ moduleRegistrationController.loadMasterView = function () {
         registrationView = $("#registration-manager-view"),
         masterView;
 
-    //Master-Detail-View erzeugen und einfügen
+    //Master-Detail-View erzeugen und einfÃ¼gen
     registrationView.html(mdViewTemplate());
 
     masterView = registrationView.find('.master-view');
@@ -29,7 +29,7 @@ moduleRegistrationController.loadMasterView = function () {
 };
 
 /**
- * Fügt die Kategorien in die Masterview ein
+ * FÃ¼gt die Kategorien in die Masterview ein
  * @param {element} parent Die Masterview
  */
 moduleRegistrationController.buildCategories = function (parent) {
@@ -39,7 +39,7 @@ moduleRegistrationController.buildCategories = function (parent) {
         ["Freier Wahlbereich", "isFreeChoiceInMajor"]
     ];
 
-    //Kategorien einfügen
+    //Kategorien einfÃ¼gen
     for (var i = 0; i < categories.length; i++) {
         $("<li><div>" + categories[i][0] + "</div><ul class='master-sub-list'></ul></li>")
             .data("category", categories[i][1])
@@ -48,14 +48,14 @@ moduleRegistrationController.buildCategories = function (parent) {
 };
 
 /**
- * Baut die Fakultätenlisten und fügt die Click-Handler hinzu
+ * Baut die FakultÃ¤tenlisten und fÃ¼gt die Click-Handler hinzu
  * @param {element} parent Die Masterview
  * @return {Promise}
  */
 moduleRegistrationController.buildFaculties = function (parent) {
     var masterSubLists = parent.find(".master-sub-list");
 
-    //Alle normalen Fakultäten zu Sublisten hinzufügen
+    //Alle normalen FakultÃ¤ten zu Sublisten hinzufÃ¼gen
     return DB.Faculty.find().resultList(function (result) {
         result.forEach(function (faculty) {
             $("<li>" + faculty.name + "</li>")
@@ -63,18 +63,18 @@ moduleRegistrationController.buildFaculties = function (parent) {
                 .appendTo(masterSubLists);
         });
     }).then(function () {
-        //Click-Handler für die Fakultäten
+        //Click-Handler fÃ¼r die FakultÃ¤ten
         masterSubLists.find("li").on("click", moduleRegistrationController.onFacultyClick);
 
-        //Onclick-Handler für Kategorien-Boxen
+        //Onclick-Handler fÃ¼r Kategorien-Boxen
         masterSubLists.prev().on("click", moduleRegistrationController.onCategoryClick);
     });
 };
 
 /**
- * Lädt die Detail-View mit der entsprechenden Ansicht
+ * LÃ¤dt die Detail-View mit der entsprechenden Ansicht
  * @param {String=} category Kategorie als Tabellenspalte
- * @param {String=} filterFaculty ID der Fakultät
+ * @param {String=} filterFaculty ID der FakultÃ¤t
  */
 moduleRegistrationController.loadDetailView = function (category, filterFaculty) {
 
@@ -122,7 +122,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
 };
 
 /**
- * Wird beim Klick auf eine Kategorie ausgelöst
+ * Wird beim Klick auf eine Kategorie ausgelÃ¶st
  */
 moduleRegistrationController.onCategoryClick = function () {
     var masterSubList = $(this).next();
@@ -140,7 +140,7 @@ moduleRegistrationController.onCategoryClick = function () {
 };
 
 /**
- * Wird beim Klick auf eine Fakultät ausgelöst
+ * Wird beim Klick auf eine FakultÃ¤t ausgelÃ¶st
  */
 moduleRegistrationController.onFacultyClick = function () {
     var category = $(this).closest(".master-sub-list").parent().data("category"),
@@ -151,7 +151,7 @@ moduleRegistrationController.onFacultyClick = function () {
 };
 
 /**
- * Entfernt selected-Klasse von allen Elementen und fügt dem angegebenen Element die Klasse hinzu
+ * Entfernt selected-Klasse von allen Elementen und fÃ¼gt dem angegebenen Element die Klasse hinzu
  * @param {jQuery} element Das Element
  */
 moduleRegistrationController.masterViewItemSelected = function (element) {
@@ -180,7 +180,7 @@ moduleRegistrationController.moduleItemClick = function () {
 
                         break;
                     case "practice":
-                        result = "Übung " + course.number + ", "
+                        result = "Ãœbung " + course.number + ", "
                             + framework.getWeekDayString(course.weekDay) + " von "
                             + framework.getTimeString(course.begin)
                             + " bis " + framework.getTimeString(course.end);
