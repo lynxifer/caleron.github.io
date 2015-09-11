@@ -84,6 +84,7 @@
 
 .detail-list-item-details th {
     min-width: 180px;
+    vertical-align: top;
 }
 
 .detail-list-item-details-right-box {

@@ -1,5 +1,9 @@
 var moduleRegistrationController = {};
-
+/**
+ * Trägt die ID des Modules, für das der Bestätigungsdialog angezeigt wird
+ * @type {string}
+ */
+moduleRegistrationController.modalModule = "";
 /**
  * Wird bei dem Anzeigen der Modulanmeldungs-View ausgeführt
  */
@@ -19,7 +23,7 @@ moduleRegistrationController.loadMasterView = function () {
         registrationView = $("#registration-manager-view"),
         masterView;
 
-    //Master-Detail-View erzeugen und einfügen
+    //Master-Detail-View erzeugen und einfÃ¼gen
     registrationView.html(mdViewTemplate());
 
     masterView = registrationView.find('.master-view');
@@ -108,7 +112,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
                 precondition: "nix",
                 courses: "",
                 description: "Axel bringt euch alles bei",
-                moduleId: module.toString()
+                moduleId: module.id
             };
 
             detailView.append(detailListItemTemplate(listItemContext));
@@ -161,7 +165,6 @@ moduleRegistrationController.masterViewItemSelected = function (element) {
 };
 
 moduleRegistrationController.moduleItemClick = function () {
-
     var moduleBox = $(this);
 
     if (moduleBox.data("loaded") === false) {
@@ -201,4 +204,30 @@ moduleRegistrationController.moduleItemClick = function () {
     } else {
         moduleBox.next().slideToggle();
     }
+};
+
+/**
+ * Wird ausgelöst, wenn der Anmeldung-Bestätigen-Dialog angezeigt wird
+ */
+moduleRegistrationController.modalShown = function (event) {
+    //gegeben von Bootstrap
+    var button = $(event.relatedTarget),
+        header = button.closest(".detail-list-item").children(0);
+
+    moduleRegistrationController.modalModule = header.data("module");
+};
+
+moduleRegistrationController.registrationAccepted = function () {
+    var registration = new DB.Registration({
+        module: moduleRegistrationController.modalModule,
+        student: DB.User.me,
+        semester: null,
+        course: null
+    });
+
+    registration.save().then(function () {
+        $("#module-registration-modal").modal("hide");
+        alert("Anmeldung erfolgreich");
+    });
+
 };
