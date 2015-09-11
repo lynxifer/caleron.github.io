@@ -1,54 +1,55 @@
 var viewController = {};
+viewController.currentView = "";
+/**
+ * Wird beim Klicken auf eine Kachel ausgelöst
+ */
+viewController.dashBoardClick = function () {
+    var tileType = $(this).data("type");
+    viewController.showView(tileType, $(this).html());
+};
 
 /**
  * Dient zum Wechseln der Views
  * @param {String} view Der Name der View
+ * @param {String=} title Die Kachel
  */
-viewController.showView = function (view) {
+viewController.showView = function (view, title) {
     $(".view-container").css("display", "none");
+
+    viewController.currentView = view;
 
     //Entsprechende View wieder anzeigen
     switch (view) {
         case "login":
             $("#login-view").css("display", "block");
             loginController.init();
-            viewController.changeTitles('Luchs');
             break;
         case "dashboard":
             $("#dashboard-view").css("display", "block");
             dashboardController.init();
-            viewController.changeTitles('Luchs');
             break;
         case "registration":
             $("#registration-manager-view").css("display", "block");
             moduleRegistrationController.init();
-            viewController.changeTitles(document.getElementById('tile-registration').innerHTML);
             break;
         case "calendar":
             $("#calendar-view").css("display", "block");
             calendarController.init();
-            viewController.changeTitles(document.getElementById('tile-calendar').innerHTML);
             break;
         case "news":
             $("#news-view").css("display", "block");
             newsController.init();
-            viewController.changeTitles(document.getElementById('tile-news').innerHTML);
             break;
         case "messaging":
             $("#messaging-view").css("display", "block");
             messagesController.init();
-            viewController.changeTitles(document.getElementById('tile-messaging').innerHTML);
             break;
-
     }
-};
 
-viewController.dashBoardClick = function () {
-    var tileType = $(this).data("type");
-    viewController.showView(tileType);
-};
+    if (title == undefined) {
+        title = "Luchs";
+    }
+    document.title = title;
 
-viewController.changeTitles = function (inhalt) {
-    document.getElementById('general-title').innerHTML = inhalt;
-    document.getElementById('header-title').innerHTML = inhalt;
-}
+    $('#header-title').html(title);
+};

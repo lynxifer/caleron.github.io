@@ -1,5 +1,9 @@
-.news-rahmen {
+.news-wrapper {
     border-bottom: 1px solid;
+}
+
+.news-wrapper:last-child {
+    border: 0 none;
 }
 
 .news-item {
