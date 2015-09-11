@@ -49,6 +49,9 @@ viewController.showView = function (view, title) {
     if (title == undefined) {
         title = "Luchs";
     }
+    else if (title == "@") {
+        title = "Nachrichten";
+    }
     document.title = title;
 
     $('#header-title').html(title);
