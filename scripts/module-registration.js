@@ -106,17 +106,18 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
                 credits: module.credits,
                 responsible: "Axel",
                 precondition: "nix",
-                courses: "Vorlesung 1 <br> &Uuml;bung 1",
-                description: "Axel bringt euch alles bei"
+                courses: "",
+                description: "Axel bringt euch alles bei",
+                moduleId: module.toString()
             };
 
             detailView.append(detailListItemTemplate(listItemContext));
         });
 
     }).then(function () {
-        $(".detail-list-item-header").on("click", function () {
-            $(this).next().slideToggle();
-        });
+        var header = $(".detail-list-item-header");
+        header.on("click", moduleRegistrationController.moduleItemClick);
+        header.data("loaded", false);
     });
 };
 
@@ -149,8 +150,47 @@ moduleRegistrationController.onFacultyClick = function () {
     moduleRegistrationController.masterViewItemSelected($(this));
 };
 
+/**
+ * Entfernt selected-Klasse von allen Elementen und fügt dem angegebenen Element die Klasse hinzu
+ * @param {jQuery} element Das Element
+ */
 moduleRegistrationController.masterViewItemSelected = function (element) {
-  $(".master-view").find(".selected").removeClass("selected");
+    $(".master-view").find(".selected").removeClass("selected");
 
     element.addClass("selected");
+};
+
+moduleRegistrationController.moduleItemClick = function () {
+
+    var moduleBox = $(this);
+
+    if (moduleBox.data("loaded") === false) {
+        var moduleId = $(this).data("module"),
+            courseBox = moduleBox.next().find(".detail-list-item-courses");
+
+        DB.Course.find().equal("module", moduleId).resultList(function (result) {
+            result.forEach(function (course) {
+                var result = "";
+                switch (course.type) {
+                    case "lecture":
+                        result = "Vorlesung " + course.number + ", " + course.weekDay + " von " + course.begin + " bis " + course.end;
+
+                        break;
+                    case "practice":
+                        result = "Übung " + course.number + ", " + course.weekDay + " von " + course.begin + " bis " + course.end;
+                        break;
+                    case "exam":
+                        result = "Klausur " + course.number + ", am " + course.date + " von " + course.begin + " bis " + course.end;
+                        break;
+                }
+
+                courseBox.append(result + "<br>");
+            });
+        }).then(function () {
+            moduleBox.data("loaded", true);
+            moduleBox.next().slideDown();
+        });
+    } else {
+        moduleBox.next().slideToggle();
+    }
 };
