@@ -4,16 +4,24 @@ messagesController.init= function(){
 
 };
 
-messagesController.sendMessages = function() {
+messagesController.sendMessages = function(event) {
+    event.preventDefault();
+
     var newMessage = new DB.Message({
         sender: DB.User.me,
-        recipient: $("#recipient-message").val(),
-        title: $("#title-message").val(),
-        content: $("#content-message").val(),
-        time: $("#send-message-button").val($date)
+        recipient: $("#recipient").val(),
+        title: $("#title").val(),
+        content: $("#message").val(),
+        time: new Date()
     });
-    Message.insert().then();
-    alert("Nachricht wurde verschickt");
+    console.log(newMessage);
+
+    newMessage.insert().then(function()
+    {
+        alert("Nachricht wurde verschickt");
+    });
+
+
 };
 
 
