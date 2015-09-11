@@ -84,8 +84,6 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
         userMajor = DB.User.me.major,
         request;
 
-    detailView.empty();
-
     request = DB.Module.find();
 
     if (category) {
@@ -99,6 +97,8 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
     }
 
     return request.resultList(function (result) {
+        detailView.empty();
+
         result.forEach(function (module) {
 
             var listItemContext = {
@@ -173,14 +173,22 @@ moduleRegistrationController.moduleItemClick = function () {
                 var result = "";
                 switch (course.type) {
                     case "lecture":
-                        result = "Vorlesung " + course.number + ", " + course.weekDay + " von " + course.begin + " bis " + course.end;
+                        result = "Vorlesung " + course.number + ", "
+                            + framework.getWeekDayString(course.weekDay) + " von "
+                            + framework.getTimeString(course.begin)
+                            + " bis " + framework.getTimeString(course.end);
 
                         break;
                     case "practice":
-                        result = "Übung " + course.number + ", " + course.weekDay + " von " + course.begin + " bis " + course.end;
+                        result = "Übung " + course.number + ", "
+                            + framework.getWeekDayString(course.weekDay) + " von "
+                            + framework.getTimeString(course.begin)
+                            + " bis " + framework.getTimeString(course.end);
                         break;
                     case "exam":
-                        result = "Klausur " + course.number + ", am " + course.date + " von " + course.begin + " bis " + course.end;
+                        result = "Klausur " + course.number + ", am "
+                            + framework.getDateString(course.date) + " von "
+                            + course.begin + " bis " + course.end;
                         break;
                 }
 
