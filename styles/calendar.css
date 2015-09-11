@@ -1,7 +1,7 @@
 #calendar-view {
     position:relative;
     background-color:darkgray;
-    height:100%;
+    height:auto;
     width:auto;
 }
 
@@ -24,6 +24,7 @@
     left:0;
     margin: 0 0 0 200px;
     height:100%;
+    overflow:auto;
 }
 
 #calendar-timeline {
@@ -35,6 +36,7 @@
     margin-top:25px;
     margin-left: 5px;
     width: 40px;
+    height:805px;
     border-right: 3px solid;
 }
 
