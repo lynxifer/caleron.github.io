@@ -11,6 +11,7 @@ var DB = {
         this.date = new Date();
         this.weekDay = 0;
         this.leader = "";
+        this.number = 1;
     },
     Faculty: function () {
         this.id = "";
