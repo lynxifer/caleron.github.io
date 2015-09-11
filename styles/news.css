@@ -13,6 +13,5 @@
 }
 
 #news-view {
-    position:absolute;
-    overflow:scroll;
+    overflow:auto;
 }
