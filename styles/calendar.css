@@ -1,8 +1,8 @@
 #calendar-view {
-    background-color : darkgrey;
-    /*height: 830px;*/
-    height: 100%;
-    /*margin: 0 10px;*/
+    position:relative;
+    background-color:darkgray;
+    height:100%;
+    width:auto;
 }
 
 #calendar-master-view {
@@ -10,40 +10,32 @@
     border: 1px solid;
     display: block;
     float: left;
-    height: 100%;
+    height:100%;
     padding: 10px;
     width: 200px;
     list-style-type: none;
 }
 
 #calendar-detail-view {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
     margin: 0 0 0 200px;
-}
-
-#calendar-header {
-    position: relative;
-/*    float: top;*/
-    height: 25px;
-}
-
-#calendar-header-table {
-    position: absolute;
-    table-layout: fixed;
-    width:100%;
-/*    top: 0;*/
-/*    margin-left: 50px;*/
-}
-
-#calendar-header-table th{
-    text-align: center;
+    height:100%;
 }
 
 #calendar-timeline {
-    float: left;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
     margin-top:25px;
     margin-left: 5px;
     width: 40px;
-    border-right: 1px solid;
+    border-right: 3px solid;
 }
 
 #calendar-timeline div {
@@ -52,16 +44,47 @@
     border-top: 1px dotted;
 }
 
+#calendar-header {
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin-left:40px;
+    height: 25px;
+    width:auto;
+}
+
+#calendar-header-table {
+    position: absolute;
+    table-layout: fixed;
+    width:100%;
+
+}
+
+#calendar-header-table th{
+    text-align: center;
+}
+
+
+
 #calendar-wrapper {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin-left:45px;
+    margin-top:25px;
+    height:805px;
+    width: auto;
 }
 
 
 #calendar-content {
-    margin-left: 50px;
 
 }
+
 #calendar-content div {
     height: 25px;
     width: 100%;
@@ -70,21 +93,25 @@
     border: 1px solid;
 }
 
-#table-div {
-    position: absolute;
-    margin-left:50px;
-    top: 0;
-}
 #calendar-table {
-    height: 600px;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    height: 805px;
     table-layout: fixed;
     width:100%;
-/*    margin-left: 50px;*/
+    border-bottom: 1px solid;
 }
 
 .calendar-day-column {
     border-right: 3px solid ;
-    height: 600px;
-    /*position: relative;*/
+    height: 805px;
+
+
+}
+
+#termin-test {
 
 }

@@ -13,7 +13,7 @@ newsController.loadNewsView = function(){
     newsView.empty();
 
     //News-View erzeugen und einfügen
-    request = DB.News.find();
+    request = DB.News.find().descending('time').limit(5);
     request.resultList(function (result) {
         result.forEach(function (news) {
 
@@ -25,5 +25,4 @@ newsController.loadNewsView = function(){
             newsView.append(newsViewTemplate(listItemContext));
         });
     });
-
 };
