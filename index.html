@@ -93,7 +93,7 @@
 
 <script id="detail-list-item-template" type="text/x-handlebars-template">
     <div class="detail-list-item">
-        <div class="detail-list-item-header">
+        <div class="detail-list-item-header" data-loaded="false" data-module="{{moduleId}}">
             <span class="detail-list-item-title">{{title}}</span>
                 <span class="detail-list-item-right-box">
                     <span class="detail-list-item-lp">{{credits}} LP</span>
@@ -117,7 +117,7 @@
                 </tr>
                 <tr>
                     <th>Veranstaltungen:</th>
-                    <td>{{{courses}}}</td>
+                    <td class="detail-list-item-courses">{{{courses}}}</td>
                 </tr>
                 <tr>
                     <th>Modulbeschreibung:</th>
