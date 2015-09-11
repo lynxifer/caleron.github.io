@@ -1,5 +1,5 @@
 var viewController = {};
-
+viewController.currentView = "";
 /**
  * Wird beim Klicken auf eine Kachel ausgelöst
  */
@@ -15,6 +15,8 @@ viewController.dashBoardClick = function () {
  */
 viewController.showView = function (view, title) {
     $(".view-container").css("display", "none");
+
+    viewController.currentView = view;
 
     //Entsprechende View wieder anzeigen
     switch (view) {
