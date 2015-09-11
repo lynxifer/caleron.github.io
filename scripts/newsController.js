@@ -20,10 +20,10 @@ newsController.loadNewsView = function (offset) {
         request.offset(offset);
     } else {
         newsView.empty();
-        newsController.currentNewsCount = 5;
+        newsController.currentNewsCount = 10;
     }
 
-    request.limit(5).resultList(function (result) {
+    request.limit(10).resultList(function (result) {
         result.forEach(function (news) {
 
             var listItemContext = {
@@ -38,5 +38,5 @@ newsController.loadNewsView = function (offset) {
 
 newsController.loadNextNews = function () {
     newsController.loadNewsView(newsController.currentNewsCount);
-    newsController.currentNewsCount += 5;
+    newsController.currentNewsCount += 10;
 };
