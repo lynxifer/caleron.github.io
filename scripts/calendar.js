@@ -21,6 +21,8 @@ calendarController.loadAppointments = function () {
         calendarAppointmentView = $("#calendar-column-day1"),
         request;
 
+    calendarAppointmentView.empty();
+
     var listItemContext = {
         title: "Modul",
         /*content: news.content,*/
