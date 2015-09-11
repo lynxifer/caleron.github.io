@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Luchs</title>
+    <title id="general-title">Luchs</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/dashboard.css">
@@ -26,8 +26,8 @@
     <script src="scripts/calendar.js"></script>
     <script src="scripts/newsController.js"></script>
     <script src="scripts/messages.js"></script>
-
 </head>
+
 <body id="luchs-body">
 <header id="luchs-header">
     <span id="header-logo"></span>
@@ -65,16 +65,16 @@
 <div id="dashboard-view" class="view-container">
     <table>
         <tr>
-            <td data-type="registration">Veranstaltungen verwalten</td>
-            <td data-type="events">Deine Veranstaltungen</td>
-            <td data-type="calendar">Kalender</td>
-            <td data-type="messaging">@</td>
+            <td data-type="registration" id="tile-registration">Veranstaltungen verwalten</td>
+            <td data-type="events" id="tile-events">Deine Veranstaltungen</td>
+            <td data-type="calendar" id="tile-calendar">Kalender</td>
+            <td data-type="messaging" id="tile-messaging">@</td>
         </tr>
         <tr>
-            <td data-type="news">News</td>
-            <td data-type="account">Konto</td>
-            <td data-type="plan">Dein Plan</td>
-            <td data-type="help">Hilfe</td>
+            <td data-type="news" id="tile-news">News</td>
+            <td data-type="account" id="tile-account">Konto</td>
+            <td data-type="plan" id="tile-plan">Dein Plan</td>
+            <td data-type="help" id="tile-help">Hilfe</td>
         </tr>
     </table>
 </div>
