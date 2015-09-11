@@ -19,6 +19,7 @@ init.assignHandlers = function () {
     DB.ready(loginController.dbReady);
 
     $(window).resize(init.windowResized);
+    $(document).on("scroll", init.windowScroll);
 
     $("#header-logo").on("click", function () {
         if (DB.User.me) {
@@ -40,4 +41,12 @@ init.assignHandlers = function () {
 
 init.windowResized = function () {
     $(".view-container").css("height", ($(window).height() - 70) + "px");
+};
+
+init.windowScroll = function () {
+    if (viewController.currentView === "news") {
+        if ($(window).height() === ($(document).height() - $(document).scrollTop())) {
+            newsController.loadNextNews();
+        }
+    }
 };
