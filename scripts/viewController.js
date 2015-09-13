@@ -44,6 +44,9 @@ viewController.showView = function (view, title) {
             $("#messaging-view").css("display", "block");
             messagesController.init();
             break;
+        case "events":
+            $("#events-view").css("display", "block");
+            eventController.init();
     }
 
     if (title == undefined) {
