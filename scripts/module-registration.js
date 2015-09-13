@@ -260,6 +260,7 @@ moduleRegistrationController.registrationAccepted = function () {
     var promises = [];
     //Elemente mit data-course-Attribut bzw. deren Select-Box auswählen
     $(".registration-course").each(function (index) {
+        //this ist hier das jeweilige Element
 
         var course;
         if (this.tagName.toLowerCase() === "div") {
