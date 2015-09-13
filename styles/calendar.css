@@ -1,6 +1,5 @@
 #calendar-view {
     position:relative;
-    background-color:gray;
     height:100%;
     width:auto;
 }
@@ -80,19 +79,18 @@
     margin-top:25px;
     height:805px;
     width: auto;
-    background: #b4b4b4;
+    background-color: #fafafa;
 }
 
 
 #calendar-content {
-
 }
 
 #calendar-content div {
     height: 25px;
     width: 100%;
     margin-bottom: 25px;
-    background-color: lightgray;
+    background-color: #dddddd;
     border: 1px solid;
     border-left: 0px;
 }
