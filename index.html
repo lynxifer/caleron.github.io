@@ -24,7 +24,7 @@
     <script src="scripts/dashboard.js"></script>
     <script src="scripts/module-registration.js"></script>
     <script src="scripts/calendar.js"></script>
-    <script src="scripts/newsController.js"></script>
+    <script src="scripts/news.js"></script>
     <script src="scripts/messages.js"></script>
     <script src="scripts/framework.js"></script>
 </head>
@@ -128,7 +128,10 @@
                 </tr>
             </table>
             <div class="detail-list-item-details-right-box">
-                <button class="btn btn-default">Anmelden</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#module-registration-modal">
+                    Anmelden
+                </button>
             </div>
         </div>
     </div>
@@ -137,7 +140,7 @@
 <script id="calendar-appointment-view-template" type="text/x-handlebars-template">
     <p class="calendar-appointment-item">
         abc
-      </p>
+    </p>
 </script>
 
 <div id="calendar-view" class="view-container">
@@ -205,39 +208,38 @@
                 <div></div>
             </div>
 
-                <table id="calendar-table">
-                    <tr>
-                        <td>
-                            <div id="calendar-column-day1" class="calendar-day-column">
+            <table id="calendar-table">
+                <tr>
+                    <td>
+                        <div id="calendar-column-day1" class="calendar-day-column">
 
-                            </div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day2" class="calendar-day-column">456</div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day3" class="calendar-day-column">789</div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day4" class="calendar-day-column">abc</div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day5" class="calendar-day-column">def</div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day6" class="calendar-day-column">ghi</div>
-                        </td>
-                        <td>
-                            <div id="calendar-column-day7" class="calendar-day-column">jkl</div>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day2" class="calendar-day-column">456</div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day3" class="calendar-day-column">789</div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day4" class="calendar-day-column">abc</div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day5" class="calendar-day-column">def</div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day6" class="calendar-day-column">ghi</div>
+                    </td>
+                    <td>
+                        <div id="calendar-column-day7" class="calendar-day-column">jkl</div>
+                    </td>
+                </tr>
+            </table>
 
         </div>
 
     </div>
 </div>
-
 
 
 <script id="news-view-template" type="text/x-handlebars-template">
@@ -274,6 +276,26 @@
 
         <button type="submit" class="btn btn-default">Abschicken</button>
     </form>
+</div>
+
+<!--  Overlay-Dialog mit Bootstrap -->
+<div class="modal fade" id="module-registration-modal" tabindex="-1" role="dialog" aria-labelledby="module-registration-modal-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="module-registration-modal-title">Modulanmeldung bestätigen</h4>
+            </div>
+            <div class="modal-body">
+                Möchten Sie sich wirklich zum Modul <span id="module-registration-modal-module"></span> anmelden?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary" id="module-registration-modal-accept-btn">Ja, ich will!</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

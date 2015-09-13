@@ -13,3 +13,7 @@
     padding: 2px 25px 10px 25px;
 }
 
+#news-view {
+    /*position:absolute;
+    overflow:scroll;*/
+}
