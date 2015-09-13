@@ -1,11 +1,11 @@
 #luchs-body {
-    background-color: #dddddd;
+    background-color: #dadada;
     font-family: Arial, sans-serif;
     margin: 0;
 }
 
 #luchs-header {
-    background-color: #2a2a2a;
+    background-color: #888;
     height: 50px;
     display: flex;
     margin-bottom: 10px;

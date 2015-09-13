@@ -1,5 +1,6 @@
 .news-wrapper {
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
+    border-bottom-color: #888;
 }
 
 .news-wrapper:last-child {
@@ -12,6 +13,3 @@
     padding: 2px 25px 10px 25px;
 }
 
-#news-view {
-    overflow:auto;
-}

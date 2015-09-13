@@ -8,7 +8,7 @@
 }
 
 #dashboard-view td {
-    border: 1px solid black;
+    border: 3px solid #888;
     height: 200px;
     width: 200px;
     background-color: #fefefe;

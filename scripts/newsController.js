@@ -6,6 +6,10 @@ newsController.init = function () {
     newsController.loadNewsView();
 };
 
+/**
+ *
+ * @param offset
+ */
 newsController.loadNewsView = function (offset) {
     var newsViewSource = $("#news-view-template").html(),
         newsViewTemplate = Handlebars.compile(newsViewSource),

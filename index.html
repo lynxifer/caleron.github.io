@@ -54,9 +54,11 @@
         <br>
         <input type="text" id="login-username-box" required>
         <br>
+        <br>
         <label for="login-password-box">Passwort: </label>
         <br>
         <input type="password" id="login-password-box" required>
+        <br>
         <br>
         <button type="submit" id="login-button">Login</button>
     </form>
@@ -68,8 +70,8 @@
         <tr>
             <td data-type="registration" id="tile-registration">Veranstaltungen verwalten</td>
             <td data-type="events" id="tile-events">Deine Veranstaltungen</td>
-            <td data-type="calendar" id="tile-calendar">Kalender</td>
-            <td data-type="messaging" id="tile-messaging">@</td>
+            <td data-type="calendar" id="tile-calendar" >Kalender</td>
+            <td data-type="messaging" id="tile-messaging" style="font-size: 4em">@</td>
         </tr>
         <tr>
             <td data-type="news" id="tile-news">News</td>
@@ -244,7 +246,7 @@
             <h3>{{title}}</h3>
 
             <p>{{{content}}}</p>
-            <h6>{{time}}</h6>
+            <h6 style="color:#b4b4b4">{{time}}</h6>
         </div>
     </div>
 </script>
