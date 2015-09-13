@@ -9,6 +9,7 @@ moduleRegistrationController.modalModule = "";
  */
 moduleRegistrationController.init = function () {
     moduleRegistrationController.loadMasterView().then(function () {
+        //Klick auf Pflichtmodule auslösen, um Detailview zu laden
         $("#registration-view").find("div").first().click();
     });
 };
@@ -23,7 +24,7 @@ moduleRegistrationController.loadMasterView = function () {
         registrationView = $("#registration-view"),
         masterView;
 
-    //Master-Detail-View erzeugen und einfÃ¼gen
+    //Master-Detail-View erzeugen und einfügen
     registrationView.html(mdViewTemplate());
 
     masterView = registrationView.find('.master-view');
@@ -159,7 +160,7 @@ moduleRegistrationController.onFacultyClick = function () {
  * @param {jQuery} element Das Element
  */
 moduleRegistrationController.masterViewItemSelected = function (element) {
-    $(".master-view").find(".selected").removeClass("selected");
+    $("#registration-view").find(".selected").removeClass("selected");
 
     element.addClass("selected");
 };
