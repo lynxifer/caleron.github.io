@@ -39,3 +39,7 @@
 #header-user-button button {
     width: 150px;
 }
+/*
+.view-container{
+    overflow-y: auto;
+}
