@@ -37,6 +37,27 @@ eventController.loadMasterView = function () {
 
 eventController.loadDetailView = function (category) {
     console.log(category);
+
+    var detailView = $("#events-view").find(".detail-view"),
+        request = DB.Registration.find({depth: 1}).equal("student", DB.User.me);
+
+    if (category) {
+        if (category === "current") {
+
+        } else if (category === "closed") {
+
+        } else if (category === "pending") {
+
+        }
+    }
+
+    request.resultList(function (result) {
+        detailView.empty();
+
+        result.forEach(function (registration) {
+
+        });
+    });
 };
 
 eventController.onCategoryClick = function () {
