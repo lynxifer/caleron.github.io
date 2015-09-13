@@ -27,6 +27,7 @@
     <script src="scripts/news.js"></script>
     <script src="scripts/messages.js"></script>
     <script src="scripts/framework.js"></script>
+    <script src="scripts/your-events.js"></script>
 </head>
 
 <body id="luchs-body">
@@ -82,66 +83,16 @@
     </table>
 </div>
 
-<div id="registration-manager-view" class="view-container md-view">
+<div id="registration-view" class="view-container md-view">
 
 </div>
 
-<script id="md-view-template" type="text/x-handlebars-template">
-    <ul class="master-view">
-    </ul>
-    <div class="detail-view">
 
-    </div>
-</script>
 
-<script id="detail-list-item-template" type="text/x-handlebars-template">
-    <div class="detail-list-item">
-        <div class="detail-list-item-header" data-loaded="false" data-module="{{moduleId}}">
-            <span class="detail-list-item-title">{{title}}</span>
-                <span class="detail-list-item-right-box">
-                    <span class="detail-list-item-lp">{{credits}} LP</span>
-                    <span class="detail-list-item-show">Anzeigen</span>
-                </span>
-        </div>
-        <div class="detail-list-item-details">
+<div id="events-view" class="view-container">
 
-            <table>
-                <tr>
-                    <th>Modulveranwortlicher:</th>
-                    <td>{{responsible}}</td>
-                </tr>
-                <tr>
-                    <th>Credits:</th>
-                    <td>{{credits}}</td>
-                </tr>
-                <tr>
-                    <th>Modulvoraussetzungen:</th>
-                    <td>{{precondition}}</td>
-                </tr>
-                <tr>
-                    <th>Veranstaltungen:</th>
-                    <td class="detail-list-item-courses">{{{courses}}}</td>
-                </tr>
-                <tr>
-                    <th>Modulbeschreibung:</th>
-                    <td>{{description}}</td>
-                </tr>
-            </table>
-            <div class="detail-list-item-details-right-box">
-                <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#module-registration-modal">
-                    Anmelden
-                </button>
-            </div>
-        </div>
-    </div>
-</script>
+</div>
 
-<script id="calendar-appointment-view-template" type="text/x-handlebars-template">
-    <p class="calendar-appointment-item">
-        abc
-    </p>
-</script>
 
 <div id="calendar-view" class="view-container">
     <div id="calendar-master-view">
@@ -297,6 +248,75 @@
         </div>
     </div>
 </div>
+
+<!-- Templates ab hier -->
+<script id="md-view-template" type="text/x-handlebars-template">
+    <ul class="master-view">
+    </ul>
+    <div class="detail-view">
+
+    </div>
+</script>
+
+<script id="detail-list-item-template" type="text/x-handlebars-template">
+    <div class="detail-list-item">
+        <div class="detail-list-item-header" data-loaded="false" data-module="{{moduleId}}">
+            <span class="detail-list-item-title">{{title}}</span>
+                <span class="detail-list-item-right-box">
+                    <span class="detail-list-item-lp">{{credits}} LP</span>
+                    <span class="detail-list-item-show">Anzeigen</span>
+                </span>
+        </div>
+        <div class="detail-list-item-details">
+
+            <table>
+                <tr>
+                    <th>Modulveranwortlicher:</th>
+                    <td>{{responsible}}</td>
+                </tr>
+                <tr>
+                    <th>Credits:</th>
+                    <td>{{credits}}</td>
+                </tr>
+                <tr>
+                    <th>Modulvoraussetzungen:</th>
+                    <td>{{precondition}}</td>
+                </tr>
+                <tr>
+                    <th>Veranstaltungen:</th>
+                    <td class="detail-list-item-courses">{{{courses}}}</td>
+                </tr>
+                <tr>
+                    <th>Modulbeschreibung:</th>
+                    <td>{{description}}</td>
+                </tr>
+            </table>
+            <div class="detail-list-item-details-right-box">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#module-registration-modal">
+                    Anmelden
+                </button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="news-view-template" type="text/x-handlebars-template">
+    <div class="news-wrapper">
+        <div class="news-item">
+            <h3>{{title}}</h3>
+
+            <p>{{{content}}}</p>
+            <h6>{{time}}</h6>
+        </div>
+    </div>
+</script>
+
+<script id="calendar-appointment-view-template" type="text/x-handlebars-template">
+    <p class="calendar-appointment-item">
+        abc
+    </p>
+</script>
 
 </body>
 </html>

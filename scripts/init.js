@@ -3,6 +3,7 @@ var init = {};
  * Wird ausgefuehrt, wenn das Dokument geladen ist
  */
 $(document).ready(function () {
+    viewController.init();
     viewController.showView("login");
 
     init.assignHandlers();

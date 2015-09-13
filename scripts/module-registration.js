@@ -9,7 +9,7 @@ moduleRegistrationController.modalModule = "";
  */
 moduleRegistrationController.init = function () {
     moduleRegistrationController.loadMasterView().then(function () {
-        $("#registration-manager-view").find("div").first().click();
+        $("#registration-view").find("div").first().click();
     });
 };
 
@@ -20,7 +20,7 @@ moduleRegistrationController.init = function () {
 moduleRegistrationController.loadMasterView = function () {
     var mdViewSource = $("#md-view-template").html(),
         mdViewTemplate = Handlebars.compile(mdViewSource),
-        registrationView = $("#registration-manager-view"),
+        registrationView = $("#registration-view"),
         masterView;
 
     //Master-Detail-View erzeugen und einfÃ¼gen
@@ -84,7 +84,7 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
 
     var detailListItemSource = $("#detail-list-item-template").html(),
         detailListItemTemplate = Handlebars.compile(detailListItemSource),
-        detailView = $("#registration-manager-view").find(".detail-view"),
+        detailView = $("#registration-view").find(".detail-view"),
         userMajor = DB.User.me.major,
         request;
 
