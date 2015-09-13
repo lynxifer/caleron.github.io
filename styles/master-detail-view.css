@@ -55,6 +55,7 @@
 
 .detail-list-item {
     border-bottom: 1px solid black;
+    background: rgba(0, 0, 0, 0) linear-gradient(#fff, #eee) repeat scroll 0 0;
 }
 
 .detail-list-item:last-child {

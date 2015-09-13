@@ -37,7 +37,7 @@ init.assignHandlers = function () {
 
     $("#messaging-new-message-form").submit(messagesController.sendMessages);
 
-    $("#module-registration-modal").on("show.bs.modal", moduleRegistrationController.modalShown);
+    $("#module-registration-modal").on("show.bs.modal", moduleRegistrationController.modalShow);
     $("#module-registration-modal-accept-btn").on("click", moduleRegistrationController.registrationAccepted);
 
 };
