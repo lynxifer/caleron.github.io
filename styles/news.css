@@ -1,6 +1,5 @@
 .news-wrapper {
-    border-bottom: 2px solid;
-    border-bottom-color: #888;
+    border-bottom: 2px solid #888;
 }
 
 .news-wrapper:last-child {
@@ -11,6 +10,9 @@
     margin: 15px 200px;
     background-color: #fff;
     padding: 2px 25px 10px 25px;
+}
+.news-item h6{
+    color:#b4b4b4;
 }
 
 #news-view {
