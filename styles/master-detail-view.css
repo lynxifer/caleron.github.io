@@ -1,6 +1,6 @@
 
 .master-view {
-    background-color: #fff;
+    background-color: #dadada;
     border: 1px solid;
     display: block;
     float: left;
@@ -41,12 +41,12 @@
 }
 
 .master-view .selected {
-    background-color: #2a2a2a;
+    background-color: #888;
     color: white;
 }
 
 .detail-view {
-    background-color: white;
+    background-color: #dadada;
     height: 100%;
     margin: 0 0 0 300px;
     border: 1px solid;
@@ -55,7 +55,7 @@
 
 .detail-list-item {
     border-bottom: 1px solid black;
-    background: rgba(0, 0, 0, 0) linear-gradient(#fff, #eee) repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) linear-gradient(#fff, #dadada) repeat scroll 0 0;
 }
 
 .detail-list-item:last-child {
