@@ -36,6 +36,12 @@ init.assignHandlers = function () {
 
     $("#dashboard-view").find("td").on("click", viewController.dashBoardClick);
 
+    $("#inbox-button").on("click", messagesController.showInbox);
+
+    $("#outbox-button").on("click", messagesController.showOutbox);
+
+    $("#write-button").on("click", messagesController.writeMessages);
+
     $("#messaging-new-message-form").submit(messagesController.sendMessages);
 
     $("#module-registration-modal").on("show.bs.modal", moduleRegistrationController.modalShow);

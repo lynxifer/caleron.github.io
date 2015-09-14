@@ -196,11 +196,61 @@
 </div>
 
 <div id="messaging-view" class="view-container">
-    <form id="messaging-new-message-form">
-        <div class="form-group">
-            <label for="recipient">Empfänger:</label>
-            <input type="text" class="form-control" id="recipient">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li id="inbox-button"><a href="#">Posteingang</a></li>
+                <li id="outbox-button"><a href="#">Postausgang</a></li>
+                <li id="write-button"><a href="#">Nachricht Schreiben</a></li>
+            </ul>
         </div>
+
+        <div id="inbox-view" class="col-md-8">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Hallo</h4>
+
+                    <p class="list-group-item-text">Alles besten</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Hallo</h4>
+
+                    <p class="list-group-item-text">Nicts besonderes</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Hallo</h4>
+
+                    <p class="list-group-item-text">Jo Mann,alles klar</p>
+                </a>
+            </div>
+        </div>
+
+        <div id="outbox-view" class="col-md-8">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Hallo Arne</h4>
+
+                    <p class="list-group-item-text">Wie Geht's dir?</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Hallo Patrick</h4>
+
+                    <p class="list-group-item-text">Was geht ab?</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">Hallo Phillip</h4>
+
+                    <p class="list-group-item-text">Alles gut bei dir?</p>
+                </a>
+            </div>
+        </div>
+
+        <form id="messaging-new-message-form">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="recipient">Empfänger:</label>
+                    <input type="text" class="form-control" id="recipient">
+                </div>
 
         <div class="form-group">
             <label for="title">Titel:</label>

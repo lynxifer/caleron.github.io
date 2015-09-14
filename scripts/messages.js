@@ -1,10 +1,29 @@
 var messagesController = {};
 
-messagesController.init= function(){
-
+messagesController.init = function () {
+    $("#messaging-new-message-form").hide();
+    $("#outbox-view").hide();
 };
 
-messagesController.sendMessages = function(event) {
+messagesController.writeMessages = function(){
+    $("#messaging-new-message-form").show();
+    $("#outbox-view").hide();
+    $("#inbox-view").hide();
+};
+
+messagesController.showOutbox = function(){
+    $("#outbox-view").show();
+    $("#inbox-view").hide();
+    $("#messaging-new-message-form").hide();
+};
+
+messagesController.showInbox = function(){
+    $("#inbox-view").show();
+    $("#outbox-view").hide();
+    $("#messaging-new-message-form").hide();
+};
+
+messagesController.sendMessages = function (event) {
     event.preventDefault();
 
     var newMessage = new DB.Message({
@@ -16,12 +35,9 @@ messagesController.sendMessages = function(event) {
     });
     console.log(newMessage);
 
-    newMessage.insert().then(function()
-    {
+    newMessage.insert().then(function () {
         alert("Nachricht wurde verschickt");
     });
-
-
 };
 
 

@@ -14,7 +14,7 @@ viewController.init = function () {
 };
 
 /**
- * Wird beim Klicken auf eine Kachel ausgelöst
+ * Wird beim Klicken auf eine Kachel ausgelï¿½st
  */
 viewController.dashBoardClick = function () {
     var tileType = $(this).data("type");
