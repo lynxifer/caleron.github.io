@@ -9,6 +9,7 @@ viewController.init = function () {
         calendar: calendarController,
         news: newsController,
         messaging: messagesController,
+        account: accountController,
         events: eventController
     };
 };

@@ -109,10 +109,10 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
             var listItemContext = {
                 title: module.name,
                 credits: module.credits,
-                responsible: "Axel",
+                responsible: "Prof",
                 precondition: "nix",
                 courses: "",
-                description: "Axel bringt euch alles bei",
+                description: module.description,
                 moduleId: module.id
             };
 
@@ -120,9 +120,13 @@ moduleRegistrationController.loadDetailView = function (category, filterFaculty)
         });
 
     }).then(function () {
-        var header = $(".detail-list-item-header");
+        var header = detailView.find(".detail-list-item-header");
+
         header.on("click", moduleRegistrationController.moduleItemClick);
         header.data("loaded", false);
+
+        detailView.find(".detail-list-item-register-btn").show();
+        detailView.find(".detail-list-item-unregister-btn").hide();
     });
 };
 
@@ -258,34 +262,45 @@ moduleRegistrationController.modalShow = function (event) {
  * Speichert die Anmeldung in der Datenbank und zeigt dann eine Erfolgsmeldung an
  */
 moduleRegistrationController.registrationAccepted = function () {
-    var promises = [];
+    var promises = [],
+        moduleBox;
+
     //Elemente mit data-course-Attribut bzw. deren Select-Box auswählen
     $(".registration-course").each(function (index) {
         //this ist hier das jeweilige Element
+        var course,
+            header = $(this).closest(".detail-list-item-details").prev();
 
-        var course;
-        if (this.tagName.toLowerCase() === "div") {
-            //wenn der Tag div ist, dann ist der Kurs eine Vorlesung
-            course = $(this).data("course");
-        } else {
-            //sonst Klausur oder Übung --> Select-Box
-            course = $(this.selectedOptions[0]).data("course");
+        //ohne diese Prüfung meldet man sich zu allen Modulen an, die geöffnet wurden
+        if (header.data("module") == moduleRegistrationController.modalModule.id) {
+            if (this.tagName.toLowerCase() === "div") {
+                //wenn der Tag div ist, dann ist der Kurs eine Vorlesung
+                course = $(this).data("course");
+            } else {
+                //sonst Klausur oder Übung --> Select-Box
+                course = $(this.selectedOptions[0]).data("course");
+            }
+
+            moduleBox = header.parent();
+
+            var registration = new DB.Registration({
+                module: moduleRegistrationController.modalModule,
+                student: DB.User.me,
+                semester: null,
+                course: course,
+                status: "current"
+            });
+
+            //Promise in Array pushen
+            promises.push(registration.save());
         }
-
-        var registration = new DB.Registration({
-            module: moduleRegistrationController.modalModule,
-            student: DB.User.me,
-            semester: null,
-            course: course
-        });
-
-        //Promise in Array pushen
-        promises.push(registration.save());
     });
 
     //Erst wenn alles gespeichert ist, Erfolgsmeldung anzeigen
     Promise.all(promises).then(function () {
         $("#module-registration-modal").modal("hide");
         alert("Anmeldung erfolgreich");
+
+        moduleBox.remove();
     });
 };

@@ -1,14 +1,14 @@
 var loginController = {};
 
 /**
- * Wird bei dem Anzeigen des Dashboards ausgeführt
+ * Wird bei dem Anzeigen des Dashboards ausgefÃ¼hrt
  */
 loginController.init = function () {
     $("#header-user-button").css("visibility", "hidden");
 };
 
 /**
- * Prüft, ob bereits eine Login existiert zeigt bei Bedarf das Dashboard an
+ * PrÃ¼ft, ob bereits eine Login existiert zeigt bei Bedarf das Dashboard an
  */
 loginController.dbReady = function () {
     console.log("DB is ready");

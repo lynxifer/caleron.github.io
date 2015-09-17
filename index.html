@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="styles/registration-manager.css">
     <link rel="stylesheet" href="styles/calendar.css">
     <link rel="stylesheet" href="styles/news.css">
+    <link rel="stylesheet" href="styles/account.css">
+    <link rel="stylesheet" href="styles/message.css">
     <link rel="stylesheet" href="styles/master-detail-view.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
 
     <script src="libs/jquery-2.1.4.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
     <script src="scripts/viewController.js"></script>
-    <script src="libs/baqend.min.js"></script>
+    <script src="libs/baqend.js"></script>
     <script src="libs/handlebars-v4.0.2.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/init.js"></script>
@@ -28,6 +30,7 @@
     <script src="scripts/messages.js"></script>
     <script src="scripts/framework.js"></script>
     <script src="scripts/your-events.js"></script>
+    <script src="scripts/account.js"></script>
 </head>
 
 <body id="luchs-body">
@@ -69,7 +72,7 @@
         <tr>
             <td data-type="registration" id="tile-registration">Veranstaltungen verwalten</td>
             <td data-type="events" id="tile-events">Deine Veranstaltungen</td>
-            <td data-type="calendar" id="tile-calendar" >Kalender</td>
+            <td data-type="calendar" id="tile-calendar">Kalender</td>
             <td data-type="messaging" id="tile-messaging" style="font-size: 4em">@</td>
         </tr>
         <tr>
@@ -86,22 +89,39 @@
 </div>
 
 
-
 <div id="events-view" class="view-container">
 
 </div>
 
 
 <div id="calendar-view" class="view-container">
-    <div id="calendar-master-view">
-        <ul>
-            <li>Monatsansicht</li>
-            <li>Wochenansicht</li>
-            <li>Tagesansicht</li>
-        </ul>
-    </div>
+    <ul class="master-view">
+        <li>
+            <div>Monatsansicht</div>
+        </li>
+        <li>
+            <div class="selected">Wochenansicht</div>
+        </li>
+        <li>
+            <div>Tagesansicht</div>
+        </li>
+    </ul>
 
-    <div id="calendar-detail-view">
+    <div id="calendar-detail-view" class="detail-view">
+
+        <div id="calendar-header">
+            <table id="calendar-header-table">
+                <tr>
+                    <th>Mo</th>
+                    <th>Di</th>
+                    <th>Mi</th>
+                    <th>Do</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>So</th>
+                </tr>
+            </table>
+        </div>
 
         <div id="calendar-timeline">
             <div>07:00</div>
@@ -122,19 +142,6 @@
             <div>22:00</div>
         </div>
 
-        <div id="calendar-header">
-            <table id="calendar-header-table">
-                <tr>
-                    <th>Mo</th>
-                    <th>Di</th>
-                    <th>Mi</th>
-                    <th>Do</th>
-                    <th>Fr</th>
-                    <th>Sa</th>
-                    <th>So</th>
-                </tr>
-            </table>
-        </div>
 
         <div id="calendar-wrapper">
 
@@ -160,27 +167,25 @@
             <table id="calendar-table">
                 <tr>
                     <td>
-                        <div id="calendar-column-day1" class="calendar-day-column">
-
-                        </div>
+                        <div id="calendar-column-day0" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day2" class="calendar-day-column">456</div>
+                        <div id="calendar-column-day1" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day3" class="calendar-day-column">789</div>
+                        <div id="calendar-column-day2" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day4" class="calendar-day-column">abc</div>
+                        <div id="calendar-column-day3" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day5" class="calendar-day-column">def</div>
+                        <div id="calendar-column-day4" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day6" class="calendar-day-column">ghi</div>
+                        <div id="calendar-column-day5" class="calendar-day-column"></div>
                     </td>
                     <td>
-                        <div id="calendar-column-day7" class="calendar-day-column">jkl</div>
+                        <div id="calendar-column-day6" class="calendar-day-column"></div>
                     </td>
                 </tr>
             </table>
@@ -195,79 +200,55 @@
 
 </div>
 
+<!--Message view ab hier-->
 <div id="messaging-view" class="view-container">
-    <div class="row">
-        <div class="col-md-2">
-            <ul class="nav nav-pills nav-stacked">
-                <li id="inbox-button"><a href="#">Posteingang</a></li>
-                <li id="outbox-button"><a href="#">Postausgang</a></li>
-                <li id="write-button"><a href="#">Nachricht Schreiben</a></li>
-            </ul>
+    <ul class="master-view" id="messaging-menu">
+        <li class="messaging-menu-item" data-type="inbox">
+            <div>Posteingang</div>
+        </li>
+        <li class="messaging-menu-item" data-type="outbox">
+            <div>Postausgang</div>
+        </li>
+        <li class="messaging-menu-item" data-type="write">
+            <div>Nachricht Schreiben</div>
+        </li>
+    </ul>
+    <div class="detail-view">
+        <div id="messaging-inbox-view" class="messaging-sub-view">
+
         </div>
 
-        <div id="inbox-view" class="col-md-8">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Hallo</h4>
+        <div id="messaging-outbox-view" class="messaging-sub-view">
 
-                    <p class="list-group-item-text">Alles besten</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Hallo</h4>
-
-                    <p class="list-group-item-text">Nicts besonderes</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Hallo</h4>
-
-                    <p class="list-group-item-text">Jo Mann,alles klar</p>
-                </a>
-            </div>
         </div>
 
-        <div id="outbox-view" class="col-md-8">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Hallo Arne</h4>
-
-                    <p class="list-group-item-text">Wie Geht's dir?</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Hallo Patrick</h4>
-
-                    <p class="list-group-item-text">Was geht ab?</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Hallo Phillip</h4>
-
-                    <p class="list-group-item-text">Alles gut bei dir?</p>
-                </a>
-            </div>
-        </div>
-
-        <form id="messaging-new-message-form">
+        <form id="messaging-new-message-form" class="messaging-sub-view">
             <div class="col-md-8">
                 <div class="form-group">
-                    <label for="recipient">Empfänger:</label>
-                    <input type="text" class="form-control" id="recipient">
+                    <label for="messaging-new-message-recipient">Empfänger:</label>
+                    <input type="text" class="form-control" id="messaging-new-message-recipient">
                 </div>
 
-        <div class="form-group">
-            <label for="title">Titel:</label>
-            <input type="text" class="form-control" id="title">
-        </div>
+                <div class="form-group">
+                    <label for="messaging-new-message-title">Titel:</label>
+                    <input type="text" class="form-control" id="messaging-new-message-title">
+                </div>
 
-        <div class="form-group">
-            <label for="message">Nachricht:</label>
-            <textarea class="form-control" rows="15" id="message"></textarea>
-        </div>
+                <div class="form-group">
+                    <label for="messaging-new-message-content">Nachricht:</label>
+                    <textarea class="form-control" rows="10" id="messaging-new-message-content"></textarea>
+                </div>
 
-        <button type="submit" class="btn btn-default">Abschicken</button>
-    </form>
+                <button type="submit" class="btn btn-default">Abschicken</button>
+            </div>
+        </form>
+    </div>
 </div>
 
+
 <!--  Overlay-Dialog mit Bootstrap -->
-<div class="modal fade" id="module-registration-modal" tabindex="-1" role="dialog" aria-labelledby="module-registration-modal-title">
+<div class="modal fade" id="module-registration-modal" tabindex="-1" role="dialog"
+     aria-labelledby="module-registration-modal-title">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,11 +261,56 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-                <button type="button" class="btn btn-primary" id="module-registration-modal-accept-btn">Ja, ich will!</button>
+                <button type="button" class="btn btn-primary" id="module-registration-modal-accept-btn">Ja, ich will!
+                </button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- zum Abmelden -->
+<div class="modal fade" id="module-unregistration-modal" tabindex="-1" role="dialog"
+     aria-labelledby="module-registration-modal-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modulabmeldung bestätigen</h4>
+            </div>
+            <div class="modal-body">
+                Möchten Sie sich wirklich vom Modul <span id="module-unregistration-modal-module"></span> abmelden?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary" id="module-unregistration-modal-accept-btn">Ja, ich will!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Konto ab hier-->
+
+<div id="account-view" class="view-container">
+
+</div>
+
+<!--Hilfe ab hier-->
+<div id="help-view" class="view-container">
+    <div class="container">
+        <h2>Fragen an:</h2>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">E-Mail:</div>
+            <div class="panel-body"><a href="#">admin@stine.uni-hamburg.de</a></div>
+
+            <div class="panel-heading">Telefonnummer:</div>
+            <div class="panel-body"><a href="#">(+49)40-5554422</a></div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Templates ab hier -->
 <script id="md-view-template" type="text/x-handlebars-template">
@@ -299,10 +325,11 @@
     <div class="detail-list-item">
         <div class="detail-list-item-header" data-loaded="false" data-module="{{moduleId}}">
             <span class="detail-list-item-title">{{title}}</span>
-                <span class="detail-list-item-right-box">
-                    <span class="detail-list-item-lp">{{credits}} LP</span>
-                    <span class="detail-list-item-show">Anzeigen</span>
-                </span>
+            <span class="detail-list-item-right-box">
+                <span class="detail-list-item-result">{{result}}</span>
+                <span class="detail-list-item-lp">{{credits}} LP</span>
+                <span class="detail-list-item-show">Anzeigen</span>
+            </span>
         </div>
         <div class="detail-list-item-details">
 
@@ -329,9 +356,13 @@
                 </tr>
             </table>
             <div class="detail-list-item-details-right-box">
-                <button type="button" class="btn btn-primary" data-toggle="modal"
+                <button type="button" class="btn btn-primary detail-list-item-register-btn" data-toggle="modal"
                         data-target="#module-registration-modal">
                     Anmelden
+                </button>
+                <button type="button" class="btn btn-primary detail-list-item-unregister-btn" data-toggle="modal"
+                        data-target="#module-unregistration-modal">
+                    Abmelden
                 </button>
             </div>
         </div>
@@ -350,10 +381,41 @@
 </script>
 
 <script id="calendar-appointment-view-template" type="text/x-handlebars-template">
-    <p class="calendar-appointment-item">
-        abc
-    </p>
+    <div class="calendar-appointment-item">
+        {{title}}<br>
+        {{type}}
+        <span>{{time}}</span>
+    </div>
+</script>
+
+<script id="message-template" type="text/x-handlebars-template">
+    <div class="messaging-list-item">
+        <h1 id="messaging-message-title">{{{title}}}</h1>
+
+        <div class="messaging-message-details">
+            <h4>{{sender}}</h4>
+            <h4>{{recipient}}</h4>
+
+            <p>{{content}}</p>
+            <h6 class="messaging-message-time">{{time}}</h6>
+        </div>
+    </div>
+
+</script>
+
+<script id="account-template" type="text/x-handlebars-template">
+    <div class="account-item">
+        <ul class="list-group container">
+            <li class="list-group-item"><label>Name:</label> {{name}}</li>
+            <li class="list-group-item"><label>Matrikelnummer:</label> {{studentId}}</li>
+            <li class="list-group-item"><label>Adresse:</label> {{address}}</li>
+            <li class="list-group-item"><label>E-Mail:</label> {{email}}</li>
+            <li class="list-group-item"><label>Studiengang:</label> {{major}}</li>
+        </ul>
+    </div>
 </script>
 
 </body>
 </html>
+
+

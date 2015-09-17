@@ -1,4 +1,32 @@
-#messaging-new-message-form
-{
-
+.messaging-message-details {
+    display: none;
 }
+
+.messaging-sub-view h1 {
+    margin: 0;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.messaging-list-item {
+    border-bottom: 1px solid black;
+    padding: 10px 15px;
+}
+
+.messaging-list-item:last-child {
+    border: 0;
+}
+
+.messaging-list-item.selected {
+    color: white;
+    background: #666;
+}
+
+.messaging-sub-view .messaging-list-item {
+    transition: all 0.2s ease 0s;
+}
+
+.messaging-message-details h6 {
+    text-align: right;
+}
+

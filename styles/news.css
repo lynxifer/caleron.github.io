@@ -10,6 +10,7 @@
     margin: 15px 200px;
     background-color: #fff;
     padding: 2px 25px 10px 25px;
+    border-radius: 10px;
 }
 .news-item h6{
     color:#b4b4b4;

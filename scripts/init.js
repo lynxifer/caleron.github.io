@@ -36,17 +36,15 @@ init.assignHandlers = function () {
 
     $("#dashboard-view").find("td").on("click", viewController.dashBoardClick);
 
-    $("#inbox-button").on("click", messagesController.showInbox);
+    $(".messaging-menu-item").on("click", messagesController.optionClick);
 
-    $("#outbox-button").on("click", messagesController.showOutbox);
-
-    $("#write-button").on("click", messagesController.writeMessages);
-
-    $("#messaging-new-message-form").submit(messagesController.sendMessages);
+    $("#messaging-new-message-form").submit(messagesController.sendMessage);
 
     $("#module-registration-modal").on("show.bs.modal", moduleRegistrationController.modalShow);
     $("#module-registration-modal-accept-btn").on("click", moduleRegistrationController.registrationAccepted);
 
+    $("#module-unregistration-modal").on("show.bs.modal", eventController.modalShow);
+    $("#module-unregistration-modal-accept-btn").on("click", eventController.unregistrationAccepted);
 };
 
 
@@ -56,8 +54,6 @@ init.windowResized = function () {
 
 init.windowScroll = function () {
     if (viewController.currentView === "news") {
-        if ($(window).height() === ($(document).height() - $(document).scrollTop())) {
-            newsController.loadNextNews();
-        }
+        newsController.scrolled();
     }
 };

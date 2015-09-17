@@ -1,6 +1,3 @@
-/**
- * Created by 3buchhar on 11.09.2015.
- */
 var framework = {};
 framework.weekDays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
 /**
@@ -30,7 +27,7 @@ framework.getDateTimeString = function (datetime) {
     return framework.getDateString(datetime) + " um " + framework.getTimeString(datetime);
 };
 /**
- * Gibt den Namen des Wochentags zurück
+ * Gibt den Namen des Wochentags zurÃ¼ck
  * @param {number} day Nullbasierter Wochentag
  * @returns {String}
  */
@@ -39,7 +36,7 @@ framework.getWeekDayString = function (day) {
 };
 
 /**
- * Konvertiert eine Zahl in einen String und füllt auf 2 Stellen auf
+ * Konvertiert eine Zahl in einen String und fÃ¼llt auf 2 Stellen auf
  * @param {number} number
  * @returns {*}
  */
